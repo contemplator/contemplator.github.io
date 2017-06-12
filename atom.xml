@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://contemplator.github.io/"/>
-  <updated>2017-06-11T14:31:46.000Z</updated>
+  <updated>2017-06-12T15:00:49.000Z</updated>
   <id>http://contemplator.github.io/</id>
   
   <author>
@@ -14,6 +14,114 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo 架設</title>
+    <link href="http://contemplator.github.io/2017/06/12/hexo-%E6%9E%B6%E8%A8%AD/"/>
+    <id>http://contemplator.github.io/2017/06/12/hexo-架設/</id>
+    <published>2017-06-12T14:04:40.000Z</published>
+    <updated>2017-06-12T15:00:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="在-Github-使用-Hexo-架設部落格"><a href="#在-Github-使用-Hexo-架設部落格" class="headerlink" title="在 Github 使用 Hexo 架設部落格"></a>在 Github 使用 Hexo 架設部落格</h1><h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ul>
+<li><p>Nodejs<br>  需要使用到 npm<br>  在終端機輸入以下指令，檢查是否安裝</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ node -v</div><div class="line">$ npm -v</div></pre></td></tr></table></figure>
+</li>
+<li><p>Git<br>  需要使用 Git 推送程式碼及資料到 Github</p>
+</li>
+</ul>
+<hr>
+<h2 id="開始正題"><a href="#開始正題" class="headerlink" title="開始正題"></a>開始正題</h2><ol>
+<li>在 GitHub 建立一個 repository</li>
+<li><p>安裝 Hexo 在全域</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化一個 Hexo 資料夾（你也可以叫他專案)</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init project_name</div></pre></td></tr></table></figure>
+</li>
+<li><p>安裝需要的套件</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd project_name</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置 yml 設定檔</p>
+</li>
+</ol>
+<h3 id="Site-網站配置"><a href="#Site-網站配置" class="headerlink" title="Site 網站配置"></a>Site 網站配置</h3><table>
+<thead>
+<tr>
+<th>配置屬性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>網站名稱</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Url-網站路徑配置"><a href="#Url-網站路徑配置" class="headerlink" title="Url 網站路徑配置"></a>Url 網站路徑配置</h3><table>
+<thead>
+<tr>
+<th>配置屬性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>網站網址 <br>ex: <a href="http://github_user_name.github.io/" target="_blank" rel="external">http://github_user_name.github.io/</a></td>
+</tr>
+<tr>
+<td>root</td>
+<td>網站的根目錄，github 的 repository 名稱  <br>ex: blog</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Deployment-部署配置"><a href="#Deployment-部署配置" class="headerlink" title="Deployment 部署配置"></a>Deployment 部署配置</h3><table>
+<thead>
+<tr>
+<th>配置屬性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>deploy</td>
+<td>部署的意思</td>
+</tr>
+<tr>
+<td>type</td>
+<td>部署的方式 <br>ex: git</td>
+</tr>
+<tr>
+<td>repo</td>
+<td>git 上面的 repository 路徑，從 github repository 的 use ssh 取得 <br>ex: git@github.com:github_user_name/blog.git</td>
+</tr>
+<tr>
+<td>branch</td>
+<td>github 的分支名稱 <br>ex: master</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p>初始化為 git 專案</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git init</div></pre></td></tr></table></figure>
+</li>
+<li><p>在專案下設定 Github 專案的遠端路徑 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git remote add remote_name remote_git</div><div class="line">```    </div><div class="line">&gt; ex: git remote add origin git@github.com:contemplator/blog.git</div><div class="line"></div><div class="line">8. 產生靜態檔（編譯 hexo 專案)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>$ hexo generate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">9. 部署到 github 上</div></pre></td></tr></table></figure></p>
+<p>$ hexo deploy<br>```</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;在-Github-使用-Hexo-架設部落格&quot;&gt;&lt;a href=&quot;#在-Github-使用-Hexo-架設部落格&quot; class=&quot;headerlink&quot; title=&quot;在 Github 使用 Hexo 架設部落格&quot;&gt;&lt;/a&gt;在 Github 使用 Hexo 架設部
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>first</title>
