@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>使用 Hexo 在 Github 架設部落格 | Blog</title>
+  <meta name="description" content="null" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/blog/">
+  <link rel="alternate" href="/blog/atom.xml" title="Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前置作業 Nodejs  需要使用到 npm  在終端機輸入以下指令，檢查是否安裝   12$ node -v$ npm -v  Git  需要使用 Git 推送程式碼及資料到 Github    開始正題 在 GitHub 建立一個 repository 安裝 Hexo 在全域  1$ npm install -g hexo  初始化一個 Hexo 資料夾（你也可以叫他專案)  1$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Hexo 在 Github 架設部落格">
+<meta property="og:url" content="http://contemplator.github.io/2017/06/12/hexo-架設/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="前置作業 Nodejs  需要使用到 npm  在終端機輸入以下指令，檢查是否安裝   12$ node -v$ npm -v  Git  需要使用 Git 推送程式碼及資料到 Github    開始正題 在 GitHub 建立一個 repository 安裝 Hexo 在全域  1$ npm install -g hexo  初始化一個 Hexo 資料夾（你也可以叫他專案)  1$">
+<meta property="og:updated_time" content="2017-06-12T15:04:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Hexo 在 Github 架設部落格">
+<meta name="twitter:description" content="前置作業 Nodejs  需要使用到 npm  在終端機輸入以下指令，檢查是否安裝   12$ node -v$ npm -v  Git  需要使用 Git 推送程式碼及資料到 Github    開始正題 在 GitHub 建立一個 repository 安裝 Hexo 在全域  1$ npm install -g hexo  初始化一個 Hexo 資料夾（你也可以叫他專案)  1$">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/blog/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/blog/' >
+				Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/blog/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/blog/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-gallery' href='https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN'>
+								Gallery
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/blog/about'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/blog/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/blog/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN" class="nav-gallery nav">
+				Gallery
+			</a>
+		
+			<a href="/blog/about" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-hexo-架設"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/blog/2017/06/12/hexo-架設/">
+    	使用 Hexo 在 Github 架設部落格
+    </a>
+  </h2>
+	<time>
+	  Jun 12, 2017
+	</time>
+	
+	</section>
+	
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前置作業"><span class="toc-number">1.</span> <span class="toc-text">前置作業</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#開始正題"><span class="toc-number">2.</span> <span class="toc-text">開始正題</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Site-網站配置"><span class="toc-number">2.1.</span> <span class="toc-text">Site 網站配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Url-網站路徑配置"><span class="toc-number">2.2.</span> <span class="toc-text">Url 網站路徑配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deployment-部署配置"><span class="toc-number">2.3.</span> <span class="toc-text">Deployment 部署配置</span></a></li></ol></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ul>
+<li><p>Nodejs<br>  需要使用到 npm<br>  在終端機輸入以下指令，檢查是否安裝</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ node -v</div><div class="line">$ npm -v</div></pre></td></tr></table></figure>
+</li>
+<li><p>Git<br>  需要使用 Git 推送程式碼及資料到 Github</p>
+</li>
+</ul>
+<hr>
+<h2 id="開始正題"><a href="#開始正題" class="headerlink" title="開始正題"></a>開始正題</h2><ol>
+<li>在 GitHub 建立一個 repository</li>
+<li><p>安裝 Hexo 在全域</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化一個 Hexo 資料夾（你也可以叫他專案)</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init project_name</div></pre></td></tr></table></figure>
+</li>
+<li><p>安裝需要的套件</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd project_name</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置 yml 設定檔</p>
+</li>
+</ol>
+<h3 id="Site-網站配置"><a href="#Site-網站配置" class="headerlink" title="Site 網站配置"></a>Site 網站配置</h3><table>
+<thead>
+<tr>
+<th>配置屬性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>網站名稱</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Url-網站路徑配置"><a href="#Url-網站路徑配置" class="headerlink" title="Url 網站路徑配置"></a>Url 網站路徑配置</h3><table>
+<thead>
+<tr>
+<th>配置屬性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>網站網址 <br>ex: <a href="http://github_user_name.github.io/" target="_blank" rel="external">http://github_user_name.github.io/</a></td>
+</tr>
+<tr>
+<td>root</td>
+<td>網站的根目錄，github 的 repository 名稱  <br>ex: blog</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Deployment-部署配置"><a href="#Deployment-部署配置" class="headerlink" title="Deployment 部署配置"></a>Deployment 部署配置</h3><table>
+<thead>
+<tr>
+<th>配置屬性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>deploy</td>
+<td>部署的意思</td>
+</tr>
+<tr>
+<td>type</td>
+<td>部署的方式 <br>ex: git</td>
+</tr>
+<tr>
+<td>repo</td>
+<td>git 上面的 repository 路徑，從 github repository 的 use ssh 取得 <br>ex: git@github.com:github_user_name/blog.git</td>
+</tr>
+<tr>
+<td>branch</td>
+<td>github 的分支名稱 <br>ex: master</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p>初始化為 git 專案</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git init</div></pre></td></tr></table></figure>
+</li>
+<li><p>在專案下設定 Github 專案的遠端路徑 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git remote add remote_name remote_git</div><div class="line">```  </div><div class="line"></div><div class="line">&gt; ex: git remote add origin git@github.com:contemplator/blog.git</div><div class="line"></div><div class="line">8. 產生靜態檔（編譯 hexo 專案)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>$ hexo generate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">9. 部署到 github 上</div></pre></td></tr></table></figure></p>
+<p>$ hexo deploy<br>```</p>
+
+  	</div>
+	  
+	</section>
+	
+</article>
+<script>
+	window.subData = {
+		title: '使用 Hexo 在 Github 架設部落格',
+		tools: true
+	}
+</script>
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<div class='header'>contemplator</div>
+<div class='content'>
+<div class='desc'>Tempora mutantur, nos et mutamur in illis ...</div>
+</div>
+</section>
+
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://ccoooss.com">
+            <div class='name'>ClassicOldSong</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://frantic1048.logdown.com/">
+            <div class='name'>Frantic1048</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://hclmaster.github.io/">
+            <div class='name'>Hclmaster</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://whst.github.io/">
+            <div class='name'>WANG Hsü-Tung</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/stkevintan" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://twitter.com/kevinsfork" class="social twitter"
+          target="_blank" rel="external">
+          <span class="icon icon-twitter"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/blog/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/blog/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/blog/js/search.js"></script>
+<script src="/blog/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
