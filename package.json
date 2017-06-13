@@ -7,7 +7,6 @@
     },
     "scripts": {
         "deploy": "hexo deploy --generate",
-        "prestart": "hexo generate",
         "start": "hexo server"
     },
     "dependencies": {
