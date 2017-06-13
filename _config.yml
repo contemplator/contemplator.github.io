@@ -7,8 +7,9 @@ title: Blog
 subtitle: Nothing special, many code
 description:
 author: contemplator
-language:
-timezone:
+language: zh-TW
+timezone: 
+favicon: favicon.ico
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'

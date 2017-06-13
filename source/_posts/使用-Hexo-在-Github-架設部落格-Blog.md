@@ -15,8 +15,10 @@ tags:
     ```
 * Git
     需要使用 Git 推送程式碼及資料到 Github
+    
+---  
 
----
+<!--more-->
 
 ## 開始正題
 1. 在 GitHub 建立一個 repository
