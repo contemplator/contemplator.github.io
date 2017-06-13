@@ -70,4 +70,4 @@ theme: material-flow
 deploy:
   type: git
   repo: git@github.com:contemplator/blog.git
-  branch: master
+  branch: gh-pages
