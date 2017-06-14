@@ -6,8 +6,9 @@ tags:
 
 這篇文章介紹我對於 git 的設定還有 _config.yml 的修改
 
----
 <!--more-->
+
+---
 
 ## Git
 
