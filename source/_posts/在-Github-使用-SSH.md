@@ -27,6 +27,7 @@ $ cd /d C:/Users/your_user_name
 ```
 
 3. 輸入以下指定
+
 ```
 & ssh-keygen -t rsa -C "youremail@emailhost"
 ```
@@ -67,3 +68,5 @@ $ ssh -T git@github.com
 Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
 Hi contemplator! You've successfully authenticated, but GitHub does not provide shell access.
 ```
+
+[參考文件](https://dotblogs.com.tw/kirkchen/2013/04/23/use_ssh_to_interact_with_github_in_windows)
