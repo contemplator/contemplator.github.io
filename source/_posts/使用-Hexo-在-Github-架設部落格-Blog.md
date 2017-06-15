@@ -70,3 +70,12 @@ $ hexo generate
 ```
 $ hexo deploy
 ```
+
+9. 如果你 deploy 出現以下錯誤，說你沒有權限，錯誤訊息可能會叫你使用 ssh 認證，請見另外一篇文章
+```
+Error: Host key verification failed.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
