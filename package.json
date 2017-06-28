@@ -6,6 +6,8 @@
         "version": "3.3.7"
     },
     "scripts": {
+        "new": "node ./custom-scripts/new.js",
+        "test" : "node ./custom-scripts/test.js",
         "deploy": "hexo deploy --generate",
         "start": "hexo server"
     },
