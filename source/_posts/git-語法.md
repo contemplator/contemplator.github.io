@@ -45,12 +45,21 @@ repository：git 的儲存庫，也可以說是 git 的專案
 | git commit          | 記錄修改，並且使用 vim 當作輸入訊息的工具 |
 | git commit -m "msg" | 記錄修改，直接在雙引號內輸入訊息(可換行)  |  
 
+## git remote
+
+| 語法                | 說明                                      |
+|---------------------|-------------------------------------------|
+| git remote -v       | 查看目前有哪些遠端目標 |
+| git remote rm <remote alias&gt; | 刪除指定別名為 remote alias 遠端目標 |
+| git remote add <remote alias&gt; <remote url&gt; | 增加 remote url 遠端目標，並且設定別名為 remote alias |
+
 ## git push
 
 | 語法                                  | 說明                         |
 |---------------------------------------|------------------------------|
-| git push                              | 推送到預設的遠端伺服器及分支 |
-| git push <-u> <server alias&gt; <branch&gt; | 推送到指定的遠端伺服器及分支 |
+| git push -u <remotes&gt; <branch&gt; | 第一次上傳，設定上傳分支，並且推送到指定的遠端伺服器及分支 |
+| git push --set-upstream <remote&gt; <branch&gt;| 同上|
+| git push                              | 非第一次上傳 推送到預設的遠端伺服器及分支 |
 
 ## git branch
 
