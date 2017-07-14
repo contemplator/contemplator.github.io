@@ -27,7 +27,7 @@ $ sudo apt-get install ibus-chewing
 
 點擊右上角的輸入法 En，出現選單後選擇 "Text Entry Setting"
 
-![Ubuntu 輸入法](/blog/image/ubuntu_type1.PNG)
+![Ubuntu 輸入法](/blog/images/ubuntu_type1.PNG)
 
 點擊圖案中的 "+" 符號，尋找新酷音 Chewing 加入
 
