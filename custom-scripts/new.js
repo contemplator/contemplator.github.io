@@ -18,6 +18,7 @@ let new_process = cp.exec(cmd_new, (error, stdout, stderr) => {
     
     let cmd = "code ./source/_posts/";
     filename = filename.replace(/\s/g, "-");
+    filename = filename.replace(/\//g, "-");
     cmd += filename + '.md';
 
     // 執行使用 vs code 打開文章的指令
