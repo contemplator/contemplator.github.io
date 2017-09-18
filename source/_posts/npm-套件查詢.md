@@ -1,8 +1,8 @@
 ---
 title: npm 套件查詢
 date: 2017-08-15 15:16:43
-tags:
-    - npm
+categories:
+    - Npm
 ---
 
 查詢全域套件的指令

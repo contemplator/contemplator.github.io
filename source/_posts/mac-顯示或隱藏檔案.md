@@ -1,8 +1,8 @@
 ---
 title: mac 顯示或隱藏檔案
 date: 2017-08-15 11:23:51
-tags:
-    - mac
+categories:
+    - OSX
 ---
 
 1. 打開終端機

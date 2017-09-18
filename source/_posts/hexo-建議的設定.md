@@ -1,7 +1,8 @@
 ---
 title: hexo 建議的設定
 date: 2017-06-13 23:12:31
-tags:
+categories:
+    - Hexo
 ---
 
 這篇文章介紹我對於 git 的設定還有 _config.yml 的修改

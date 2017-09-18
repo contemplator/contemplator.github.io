@@ -1,8 +1,8 @@
 ---
 title: Ubuntu 安裝中文新酷音
 date: 2017-07-04 16:12:32
-tags:
-    - ubuntu
+categories:
+    - Ubuntu
 ---
 
 在一開始接觸 Ubuntu 最不習慣的應該就是預設只有英文鍵盤，每次久久用虛擬機建立一個新的 ubuntu 就會忘記上次怎麼把中文裝進去的...

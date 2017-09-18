@@ -2,7 +2,7 @@
 title: Test Double (測試替身)
 date: 2017-06-21 15:02:26
 tags:
-    - test
+    - Test
 ---
 
 使用 Test Double 測試替身，可以解決要測試時會需要的複雜的元件，以及測試可能會測很久的問題，我們可以直接修改 Test Double，也可以讓資料集小一點。

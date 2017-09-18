@@ -1,8 +1,10 @@
 ---
 title: Karma Test
 date: 2017-06-20 17:35:38
+categories: 
+    - Angular
 tags:
-    - test
+    - Test
 ---
 
 如果你和我一樣使用 angular cli 建立專案，你會發現在 app 資料夾下有 5 個檔案：

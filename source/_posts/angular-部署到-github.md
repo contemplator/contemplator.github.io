@@ -1,9 +1,10 @@
 ---
 title: angular 部署到 github
 date: 2017-08-16 17:41:53
+categories:
+    - Angular
 tags:
-    - github
-    - angular
+    - Github
 ---
 
 1. 安裝 npm 全域套件

@@ -1,7 +1,11 @@
 ---
 title: 使用 Hexo 在 Github 架設部落格 | Blog
 date: 2017-06-12 23:07:34
-tags:
+categories:
+    - Hexo
+tags: 
+    - Github
+    - Blog
 ---
 
 ## 前置作業

@@ -1,9 +1,10 @@
 ---
 title: angular 部署到 firebase
 date: 2017-08-15 15:12:30
+categories:
+    - Angular
 tags:
-    - angular
-    - firebase
+    - Firebase
 ---
 
 1. 使用 angilar cli 成功建立 angular 專案

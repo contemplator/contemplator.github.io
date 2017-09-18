@@ -1,8 +1,8 @@
 ---
 title: 更新 angular 套件
 date: 2017-08-15 11:33:35
-tags:
-    - angular
+categories:
+    - Angular
 ---
 
 1. 打開終端機

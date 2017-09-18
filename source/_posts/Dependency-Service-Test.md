@@ -1,9 +1,10 @@
 ---
 title: Dependency Service Test
 date: 2017-06-21 14:56:16
+categories:
+    - Angular
 tags:
-    - test
-    - angular
+    - Test
 ---
 
 在開發 angular 的時候，如果使用到資料，很常會依賴 service 來傳遞資料。

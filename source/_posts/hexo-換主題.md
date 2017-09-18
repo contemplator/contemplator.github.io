@@ -1,7 +1,8 @@
 ---
 title: 'hexo 換主題'
 date: 2017-06-14 17:21:55
-tags:
+categories:
+    - Hexo
 ---
 
 這篇主要是介紹怎麼換掉 hexo 的主題 (Theme)，順帶一提，原本的主題叫 landscape，我現在用的叫做 material-flow。

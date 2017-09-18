@@ -1,7 +1,8 @@
 ---
 title: 'VS Code 控制 Tab 大小'
 date: 2017-06-16 09:12:12
-tags:
+categories:
+    - Visual Studio Code
 ---
 
 VS code 全名為 Visual Studio Code，是一個功能強大的記事本軟體，因為在開發 angular2，大家都推薦這個，就開始用了。

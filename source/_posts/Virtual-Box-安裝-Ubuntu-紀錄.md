@@ -1,9 +1,10 @@
 ---
 title: Virtual Box 安裝 Ubuntu 紀錄
 date: 2017-06-26 11:37:31
-tags:
-    - VM
-    - ubuntu
+categories:
+    - Ubuntu
+tags: 
+    - Virtual Box
 ---
 
 最近有點想要了解網管的工作，還有就是學一些較底層的東西，所以又開始接觸 VM，這次一樣是使用之前大學就常用的 Virtual Box，希望可以在 VM 架設 FTP 和 nodejs 的服務，同時可以讓我的實體機可以連到 VM。

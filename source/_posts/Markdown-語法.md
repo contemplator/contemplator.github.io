@@ -1,8 +1,8 @@
 ---
 title: Markdown 常用語法
 date: 2017-07-14 22:36:50
-tags:
-    - markdown
+categories:
+    - Markdown
 ---
 
 這邊我會介紹我常用的 markdown 語法

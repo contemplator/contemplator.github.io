@@ -1,9 +1,8 @@
 ---
 title: Component Test
 date: 2017-06-21 11:16:56
-tags:
-    - test
-    - angular
+categories: 
+    - Angular
 ---
 
 angular 最重要的就是 component，而我本身也不是很清楚 angular 是怎麼把 多個 component 編譯成一頁式的網頁，所以如何建立測試環境我就不會了，幸好

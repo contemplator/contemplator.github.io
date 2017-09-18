@@ -1,9 +1,10 @@
 ---
 title: 'Angular Test'
 date: 2017-06-19 15:35:31
-tags: 
-    - angular
-    - test
+categories: 
+    - Angular
+tags:
+    - Test
 ---
 
 angular 在一開始初始化專案的時候，就會發現 package.json 裡面有很多測試的第三方套件，如 karma、jasmine 等，在看官方文件的時候，就大概有說是要因應不同情況的測試，像是點對點、單元測試等，接下來幾天我會花時間研究怎麼寫測試，不過主要還是想要研究單元測試就好 XD。

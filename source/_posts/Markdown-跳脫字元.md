@@ -1,8 +1,11 @@
 ---
 title: Markdown 跳脫字元
 date: 2017-07-14 23:14:00
+categories:
+    - Markdown
 tags:
-    - markdown
+    - escape
+    - 跳脫字元
 ---
 
 在說明之前，可以先了解 Markdown 和 html 一樣是標記型語言，倒不如說他是一種 html 的變形，因為我們寫的 Markdown 會被編譯成 html 語法，讓我們便於書寫，也讓觀眾便於閱讀。
