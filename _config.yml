@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Blog
-subtitle: Nothing special, many code
-description:
-author: contemplator
-language: zh-TW
+title: Leo Lin's Blog
+subtitle: 
+description: personal note
+author: contemplator 
+language: zh-TW 
 timezone: 
 favicon: favicon.ico
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://contemplator.github.io/
+url: http://contemplator.github.io/blog
 root: /blog
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -72,3 +72,7 @@ deploy:
   type: git
   repo: git@github.com:contemplator/blog.git
   branch: gh-pages
+
+# sitemap
+sitemap:
+  path: sitemap.xml
