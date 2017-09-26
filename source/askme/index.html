@@ -1,0 +1,138 @@
+<link rel="stylesheet" href="./css/askme.css">
+
+<h2>Ask me</h2>
+
+<p>在這邊詢問的問題，我會用回信或其他的方式回覆，不會讓其他人看到。我會盡量在三天內回覆，所以請一定要留下信箱或其他方式。資安沒有做很好，請不要隨意留下個資。</p>
+
+<div class="form">
+    <form id="askme">
+        <div class="form-item">
+            <label for="username">我該怎麼稱呼你</label>
+            <input id="username" name="username" class="form-input" type="text">
+        </div>
+        <div class="form-item">
+            <label for="email">Email</label>
+            <input id="email" name="email" class="form-input" type="email">
+        </div>
+        <div class="form-item">
+            <label for="content">內容</label>
+            <textarea id="content" name="content" class="form-input" rows="5"></textarea>
+        </div>
+        <div class="form-item">
+            <label for="content"></label>
+            <button id="submit" type="button" onClick="verifyData()">送出</button>
+        </div>
+    </form>
+</div>
+
+<div id="mask"></div>
+<div id="loading">
+    <div id="fountainG_1" class="fountainG"></div>
+    <div id="fountainG_2" class="fountainG"></div>
+    <div id="fountainG_3" class="fountainG"></div>
+    <div id="fountainG_4" class="fountainG"></div>
+    <div id="fountainG_5" class="fountainG"></div>
+    <div id="fountainG_6" class="fountainG"></div>
+    <div id="fountainG_7" class="fountainG"></div>
+    <div id="fountainG_8" class="fountainG"></div>
+</div>
+<div id="error">網路發生錯誤</div>
+
+<script>
+    // 驗證資料
+    function verifyData() {
+        var errorElement = document.getElementById("error");
+        var jsonObject = {};
+        var formInputs = document.getElementsByClassName("form-input");
+        for (var i = 0; i < formInputs.length; i++) {
+            var item = formInputs[i];
+            switch (item.name) {
+                case "email":
+                    if (!validateEmail(item.value)) {
+                        errorElement.innerText = item.name + " 格式錯誤或者尚未填寫資料";
+                        showError();
+                        return;
+                    }
+                    continue;
+                default:
+                    if (item.value == "" || !item.value) {
+                        errorElement.innerText = item.name + " 尚未填寫資料";
+                        showError();
+                        return;
+                    }
+                    break;
+            }
+        }
+
+        sendData();
+    }
+
+    // 驗證信箱
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    // 送出表單資料
+    function sendData() {
+        var askMeAppUrl = "https://script.google.com/macros/s/AKfycbzmHx5ZH_NazoePJLValTWb1hKf1cDqyF9Mj0AK6xldfrbphUJD/exec";
+
+        // 整理 form 資料
+        var jsonObject = {};
+        var formInputs = document.getElementsByClassName("form-input");
+        for (var i = 0; i < formInputs.length; i++) {
+            jsonObject[formInputs[i].name] = formInputs[i].value;
+        }
+
+        // parse json object to url params
+        var params = Object.keys(jsonObject).map(function (k) {
+            return encodeURIComponent(k) + '=' + encodeURIComponent(jsonObject[k])
+        }).join('&');
+
+        // send http request
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("POST", askMeAppUrl, true);
+        xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlHttp.onload = function () {
+            hideLoading();
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                callback(xmlHttp.responseText);
+            } else {
+                showError(xmlHttp.status);
+            }
+        }
+        xmlHttp.send(params);
+        showLoading();
+    }
+
+    // http callback
+    function callback(res) {
+        // 清空資料
+        var formInputs = document.getElementsByClassName("form-input");
+        for (var i = 0; i < formInputs.length; i++) {
+            formInputs[i].value = "";
+        }
+    }
+
+    // 顯示處理中訊息
+    function showLoading() {
+        document.getElementById("mask").className = "active";
+        document.getElementById("loading").className = "active";
+    }
+
+    // 隱藏處理中訊息
+    function hideLoading() {
+        document.getElementById("mask").className = "";
+        document.getElementById("loading").className = "";
+    }
+
+    // http 發生錯誤
+    function showError(status) {
+        console.log("showError", status);
+        document.getElementById("error").className = "active";
+        setTimeout(function () {
+            document.getElementById("error").className = "hide";
+        }, 4000);
+    }
+
+</script>
