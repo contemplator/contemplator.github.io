@@ -2,8 +2,8 @@
 title: angular 使用 google 試算表當資料庫
 date: 2017-10-01 21:14:01
 categories:
-    - Angular
     - Google
+    - Angular
 tags:
     - proxy
 ---

@@ -2,7 +2,7 @@
 title: hexo 新增文章並打開
 date: 2017-06-28 16:00:40
 categories:
-    - hexo
+    - Hexo
 tags: 
     - new
 ---
