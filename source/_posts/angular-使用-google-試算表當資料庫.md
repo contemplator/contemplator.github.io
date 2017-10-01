@@ -95,7 +95,7 @@ function doPost(e) {
 
 - e.postData.contents
 > 我是用 Google App Script 的 console.log() 才找到我傳進來資料的結構，才知道要從 postData.contents 取得
-
+> [Google App Script Log](/blog/2017/10/01/Google-App-Script-Log/)
 ---
 
 ## Access-Control-Allow-Origin
@@ -136,6 +136,8 @@ public addTrans(params): Observable<boolean>{
 
 ## 參考資料
 [用 Google Apps Script 操作試算表 (1)製作資料庫 + 寫入資料](http://www.wfublog.com/2017/01/google-apps-script-spreadsheet-write-data.html)
+[The Ionic 2 proxy](https://www.techiediaries.com/ionic-2-proxy/)
+[Google App Script Log](/blog/2017/10/01/Google-App-Script-Log/)
 
 ---
 
