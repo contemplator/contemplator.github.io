@@ -71,6 +71,10 @@ arr 原始的完整陣列資料
 
 map 的 callback function 一定要回傳值，因為他要讓陣列經過 map 處理後還是陣列型態
 
+[Source Code](https://github.com/contemplator/rxjs-practice/blob/master/src/app/array/map/map.component.ts)
+
+---
+
 ## forEach
 
 forEach 和 map 很像，我一開始知道 forEach 是在 php，他讓我不用在每次都寫 for(let i=0; i<arr.length; i++) 這麼囉唆語句，只要是陣列裡每個東西都要處理，就直接用 foreach 就好
@@ -113,10 +117,12 @@ forEach 和 map 我認為最大的差異就是 map 的 callback function 規定�
 
 PS. map 也可以不 return，但是 map 就不會回傳陣列，而是 null 值
 
-map 的公式長這樣：
+forEach 的公式長這樣：
 
 ```
 someArr.forEach((currentValue, index, arr) => {
     statement...
 });
 ```
+
+[Source Code](https://github.com/contemplator/rxjs-practice/blob/master/src/app/array/foreach/foreach.component.ts)

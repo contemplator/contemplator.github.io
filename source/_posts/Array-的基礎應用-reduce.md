@@ -109,3 +109,6 @@ filtPass(): { name: string, score: number }[] {
 PS. else {return curArr}; 很重要，若是沒有變動陣列，也要將原本的陣列回傳，不然下一次的 curArr 會是 undefined，會噴錯
 
 PS. 如果像是根據資料去篩選，有 array.filter 這樣好用的函數可以用。
+
+
+[Source Code](https://github.com/contemplator/rxjs-practice/blob/master/src/app/array/reduce/reduce.component.ts)

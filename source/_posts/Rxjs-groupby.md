@@ -47,7 +47,7 @@ originalData = [
 
 ---
 
-## 程式碼 Version 1
+## Version 1 - groupBy()
 
 ```
 Observable.from(this.originalData)
@@ -68,7 +68,7 @@ Observable.from(this.originalData)
 
 ---
 
-## 程式碼 Version 2
+## Version 2 - mergeMap() + toArray()
 
 增加 mergeMap
 
@@ -94,7 +94,7 @@ mergeMap 是增加的過程，簡單說就是把 GroupedObservable 內實際的�
 
 PS. toArray 也是 rxjs 提供的函數，你也可以使用 reduce 來完成
 
-## 程式碼 Version 2 - reduce Version
+## Version 2 - mergeMap() + reduce()
 
 ```
 Observable.from(this.originalData)
@@ -118,7 +118,7 @@ PS. () => {statement} 是 arrow function 寫法，有興趣的人可以找找這
 
 --- 
 
-## 程式碼 Version 3
+## Version 3 - zip()
 
 在 mergeMap 使用 zip
 
@@ -144,7 +144,7 @@ Observable.from(this.originalData)
 
 ---
 
-## 程式碼 Version 4
+## Version 4 - zip() + map()
 
 再 map 一次，**Observable.from().map()**
 
@@ -167,3 +167,5 @@ Observable.from(this.originalData)
 ![Groupby Version4](/blog/images/Groupby Version4.png)
 
 就這樣告一段落吧！
+
+[Source Code](https://github.com/contemplator/rxjs-practice/blob/master/src/app/rxjs/groupby/groupby.component.ts)
