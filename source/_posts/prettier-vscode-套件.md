@@ -2,12 +2,11 @@
 title: prettier - vscode 套件
 date: 2018-01-29 22:02:47
 categories:
-    - Angular
     - Visual Studio Code
-    - Web
 tags:
     - vscode
     - plugin
+    - angular
 ---
 
 最近很常和公司的設計師聊，因為會一直被她很有壓力的逼迫，順便檢討自己的工作方式，雖然一直覺得是自己再配合大家，可是其實有時是別人配合我都沒有發現...

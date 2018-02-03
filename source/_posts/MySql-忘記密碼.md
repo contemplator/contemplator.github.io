@@ -3,8 +3,6 @@ title: MySql 忘記密碼
 date: 2017-12-14 23:42:34
 categories:
     - MySql
-tags:
-    - MySql
 ---
 
 略過前情提要，反正這篇在說如果你忘記 MySql root 的密碼的話，你可以怎麼做。

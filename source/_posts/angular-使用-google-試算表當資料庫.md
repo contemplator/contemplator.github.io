@@ -2,10 +2,10 @@
 title: angular 使用 google 試算表當資料庫
 date: 2017-10-01 21:14:01
 categories:
-    - Google
     - Angular
 tags:
-    - proxy
+    - Proxy
+    - Google
 ---
 
 最近一直想要試作一些個人用的 APP，然後試試看用 ionic 3 寫看看，看能不能每天自己用，然後慢慢改善、慢慢收集一些資料，做一些小功能的試做，不過用 ionic 3 開發，真的遇到蠻多問題的，像是我就不知道資料庫應該怎麼抉擇，一開始用 SQLite 結果開發起來好綁手綁腳的 ＱＱ
