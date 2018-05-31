@@ -21,6 +21,17 @@ angular 建立了一個網站，透過指定版本，就可以告訴你應該怎
 
 [如何更新 Angular 的教學網站](https://update.angular.io/)
 
+---
+
+## Rxjs 5 到 6
+
+請先看此文章的介紹，日後會有一篇文章的整理
+
+[Fix your RxJS 6 Imports & Operators - What's New in RxJS 6?](https://www.youtube.com/watch?v=X9fdpGthrXA)
+
+主要就是 import 的方式改變
+
+還有增加 pipe 的用法，過去都是 Observable.map() 現在要改成 Observable.pipe(map())，多了一個 pipe，將過去的 operator 都寫在 pipe 內
 
 ---
 
