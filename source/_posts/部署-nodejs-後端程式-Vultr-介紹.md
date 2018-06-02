@@ -83,3 +83,9 @@ Step 8: Deploy Now
 [Vultr](https://www.vultr.com/)
 
 [如何選擇好的主機商](https://www.inside.com.tw/2017/03/17/how-to-picking-the-right-web-hosting)
+
+---
+
+我自己在 Vultr 日本機器上弄完之後，一開始覺得速度好像有點慢，可是再回去開 Godaddy 的網站，hmm...，好多是比較快的ＸＤ
+
+在中國的主機商架站絕對不是優先考量，如果你只是要透過 IP 連線是可以考慮，因為如果你要為中國境內的主機加上 Domain 管理，就會被警告要替網站做備案，有點小麻煩就沒弄了，所以問我我也不知道。
