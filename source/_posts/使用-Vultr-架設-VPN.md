@@ -15,9 +15,9 @@ tags:
 
 ## 選擇 OS 和 安裝 OpenVPN 
 
-建議是使用 CentOS 64x，只是官方建議而已，如果沒有特別偏好，就用 CentOS 吧！
+切換到 Application 的頁籤，選擇 OpenVPN
 
-接下來切換到 Application 的頁籤，選擇 OpenVPN
+**PS. 注意，選了 Application 就不要再去選 OS 了，因為選擇了 Application 就等於選了他指定的 OS**
 
 ![Vultr App select OpenVPN](/blog/images/vultr_app_openvpn.png)
 
