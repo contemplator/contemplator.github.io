@@ -35,6 +35,10 @@ tags:
 bind-address            = <your-ip>
 ```
 
+** 更新 2018-06-06 **
+
+如果你的 Mysql Server 要允許外部連入，但是也要允許 localhost 連入，就直接把 bind-address 都註解就好，連 bind-address = VPS IP 都不要
+
 ## 重啟 mysql
 
 ```
@@ -190,4 +194,6 @@ PS. 3306 是 mysql 預設的 port
 
 [CREATE USER Syntax](https://dev.mysql.com/doc/refman/8.0/en/create-user.html)
 
-[description](https://www.cyberciti.biz/tips/how-do-i-enable-remote-access-to-mysql-database-server.html)
+[How Do I Enable Remote Access To MySQL Database Server?](https://www.cyberciti.biz/tips/how-do-i-enable-remote-access-to-mysql-database-server.html)
+
+[SET PASSWORD Syntax](https://dev.mysql.com/doc/refman/8.0/en/set-password.html)
