@@ -2,8 +2,8 @@
 title: nginx 重啟失敗
 date: 2018-06-04 21:14:21
 categories:
-    - OSX
     - Nginx
+    - OSX
 tags:
 ---
 

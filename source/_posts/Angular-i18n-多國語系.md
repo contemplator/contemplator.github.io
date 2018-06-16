@@ -2,10 +2,10 @@
 title: Angular i18n 多國語系設置
 date: 2018-06-06 13:02:48
 categories:
-    - Angualr
+    - Angular
 tags:
     - i18n
-    - international
+    - internationalization
     - 多國語系
 ---
 
