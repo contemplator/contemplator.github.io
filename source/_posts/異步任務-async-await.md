@@ -2,7 +2,7 @@
 title: 異步任務 async await 示範
 date: 2018-05-26 17:04:41
 categories:
-    - javascript
+    - Javascript
 tags:
     - async
     - await
