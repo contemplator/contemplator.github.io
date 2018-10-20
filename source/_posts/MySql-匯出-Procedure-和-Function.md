@@ -59,6 +59,6 @@ FLUSH PRIVILEGES;
 
 ## 參考資料
 
-[description](http://www.ducea.com/2007/07/25/dumping-mysql-stored-procedures-functions-and-triggers/)
+[dumping-mysql-stored-procedures-functions-and-triggers](http://www.ducea.com/2007/07/25/dumping-mysql-stored-procedures-functions-and-triggers/)
 
-[description](https://stackoverflow.com/questions/30841351/mysqldump-insufficient-privileges-to-show-create-function-funcation-name/32765366)
+[mysqldump: insufficient privileges to show create function 'funcation name'](https://stackoverflow.com/questions/30841351/mysqldump-insufficient-privileges-to-show-create-function-funcation-name/32765366)
