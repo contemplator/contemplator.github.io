@@ -81,4 +81,11 @@ sitemap:
 ## 教學：http://z.arlmy.me/posts/Hexo/Hexo_BlogEncrypt/
 ## Doc: https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md
 encrypt:
-    enable: true
+  enable: true
+
+# flow chart 流程圖
+## Docs: https://github.com/bubkoo/hexo-filter-flowchart
+flowchart:
+  # raphael: https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js
+  # flowchart: https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js
+  options: 
