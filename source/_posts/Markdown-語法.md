@@ -96,9 +96,9 @@ ex: ![錯誤圖片連結](/blog/images/error.png)
 如果你要插入一個圖片，語法比較難記，用 "[]" 中括號夾住 alt 訊息，要知道什麼是 alt 訊息，請去了解 html tag &lt;img&gt; 的 alt 屬性用途。
 再用 "()" 小括號夾住你圖片的路徑，記得前面要加 "!" 驚嘆號，和外部連結區別。
 
-![測試圖片](./blog/images/test.png)
+![測試圖片](/blog/images/test.png)
 
-![錯誤圖片連結](./blog/images/error.png)
+![錯誤圖片連結](/blog/images/error.png)
 
 ---
 
