@@ -3,11 +3,10 @@
   "version": "1.1.0",
   "private": true,
   "hexo": {
-    "version": "3.7.1"
+    "version": "3.9.0"
   },
   "scripts": {
     "new": "node ./custom-scripts/new.js",
-    "test": "node ./custom-scripts/test.js",
     "deploy": "hexo deploy --generate",
     "start": "hexo server"
   },
