@@ -24,6 +24,14 @@ $ npm install
 $ git clone https://github.com/contemplator/hexo-theme-material-flow.git themes/material-flow
 ```
 
+### deploy 到 GitHub 前置作業
+
+```
+$ ssh-keygen -t rsa -C "test@email.com"
+```
+
+產生好 ssh key 之後要到 GitHub 的個人設定去添加進去
+
 ## 建立新的文章
 
 ```
