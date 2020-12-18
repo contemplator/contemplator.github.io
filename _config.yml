@@ -13,10 +13,7 @@ favicon: favicon.ico
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://contemplator.github.io/blog
-root: /blog
-permalink: :year/:month/:day/:title/
-permalink_defaults:
+url: https://contemplator.github.io
 
 # Directory
 source_dir: source
@@ -70,8 +67,8 @@ theme: material-flow
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:contemplator/blog.git
-  branch: gh-pages
+  repo: https://github.com/contemplator/contemplator.git
+  branch: master
 
 # sitemap
 sitemap:

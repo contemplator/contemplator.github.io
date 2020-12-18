@@ -49,3 +49,29 @@ $ npm start
 ```
 $ npm run deploy
 ```
+
+## 分類
+
+- AWS
+- Angular
+- CSS
+- Firebase
+- Git
+- Google
+- Hexo
+- Javascript
+- Markdown
+- MySql
+- Nginx
+- Nodejs
+- Npm
+- OSX
+- Rxjs
+- Ubuntu
+- Visual Studio Code
+- Web
+- 使用者體驗
+- 工作筆記
+- 日記
+- 羽球日記
+- 讀書筆記
