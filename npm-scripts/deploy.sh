@@ -22,7 +22,7 @@ echo "remove old files done"
 
 # 搬移到 tomcat 內
 
-ssh -tt root@202.182.97.161 "mv /var/www/public/ /var/www/html/blog"
+ssh -tt root@202.182.97.161 "mv /root/public/ /var/www/html/blog"
 
 echo "move files done"
 
@@ -33,4 +33,3 @@ rm ./blog.tar.gz
 # 刪除遠端的壓縮檔案
 
 ssh -tt root@202.182.97.161 "rm /var/www/blog.tar.gz"
-ssh -tt root@202.182.97.161 "rm -r /var/www/public"
