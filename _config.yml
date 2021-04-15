@@ -9,11 +9,11 @@ description: personal note
 author: Leo Lin 
 language: zh-TW 
 timezone: 
-favicon: favicon.ico
+favicon: ./favicon.ico
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://contemplator.github.io
+url: https://blog.hung.services
 
 # Directory
 source_dir: source
@@ -67,8 +67,8 @@ theme: material-flow
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/contemplator/contemplator.git
-  branch: master
+  repo: https://github.com/contemplator/contemplator.github.io.git
+  branch: main
 
 # sitemap
 sitemap:

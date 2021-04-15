@@ -7,7 +7,10 @@
   },
   "scripts": {
     "new": "node ./custom-scripts/new.js",
-    "deploy": "hexo deploy --generate",
+    "build": "hexo generate",
+    "predeploy": "npm run build",
+    "deploy": "sh ./npm-scripts/deploy.sh",
+    "deploy-github": "hexo deploy --generate",
     "start": "hexo server"
   },
   "dependencies": {

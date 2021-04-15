@@ -13,7 +13,7 @@ categories:
 $ ls | grep -P "localhost_access_log..2018*"
 ```
 
-![regex 刪除檔案](/blog/images/regex 刪除檔案01.png)
+![regex 刪除檔案](/images/regex 刪除檔案01.png)
 
 查詢檔名符合條件的檔案並 "刪除"
 
@@ -21,7 +21,7 @@ $ ls | grep -P "localhost_access_log..2018*"
 $ ls | grep -P "localhost_access_log..2018*" | xargs -d"\n" rm
 ```
 
-![regex 刪除檔案](/blog/images/regex 刪除檔案02.png)
+![regex 刪除檔案](/images/regex 刪除檔案02.png)
 
 <!-- more -->
 
