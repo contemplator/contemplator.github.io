@@ -6,13 +6,13 @@ tar zcvf blog.tar.gz ./public
 
 # 複製到 server 上
 
-scp -r ./blog.tar.gz root@202.182.97.161:/var/www/blog.tar.gz
+scp -r ./blog.tar.gz root@202.182.97.161:/root/blog.tar.gz
 
 echo "copy files done"
 
 # 解壓縮
 
-ssh -tt root@202.182.97.161 "tar zxvf /var/www/blog.tar.gz"
+ssh -tt root@202.182.97.161 "tar zxvf /root/blog.tar.gz"
 
 # 刪除 server 檔案
 
@@ -32,4 +32,4 @@ rm ./blog.tar.gz
 
 # 刪除遠端的壓縮檔案
 
-ssh -tt root@202.182.97.161 "rm /var/www/blog.tar.gz"
+ssh -tt root@202.182.97.161 "rm /root/blog.tar.gz"
