@@ -24,14 +24,6 @@ $ npm install
 $ git clone https://github.com/contemplator/hexo-theme-material-flow.git themes/material-flow
 ```
 
-### deploy 到 GitHub 前置作業
-
-```
-$ ssh-keygen -t rsa -C "test@email.com"
-```
-
-產生好 ssh key 之後要到 GitHub 的個人設定去添加進去
-
 ## 建立新的文章
 
 ```
@@ -44,11 +36,13 @@ $ npm run new --file=filename
 $ npm start
 ```
 
-## 發佈到 Github 供大家瀏覽
+## 發佈到 Server 供大家瀏覽
 
 ```
 $ npm run deploy
 ```
+
+PS. 執行 npm run build 以及 npm run deploy 時要確保 node 版本在 12 以下，超過 12 的版本，index.html 內容都會為空
 
 ## 分類
 
@@ -75,3 +69,5 @@ $ npm run deploy
 - 日記
 - 羽球日記
 - 讀書筆記
+- Vue
+- Vite
