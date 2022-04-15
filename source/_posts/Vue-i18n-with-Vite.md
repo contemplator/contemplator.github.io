@@ -1,5 +1,5 @@
 ---
-title: Vue i18n with Vite
+title: Vue - i18n with Vite
 date: 2022-04-14 12:16:34
 categories:
   - Vue
