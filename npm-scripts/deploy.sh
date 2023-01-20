@@ -16,13 +16,13 @@ ssh -tt root@202.182.97.161 "tar zxvf /root/blog.tar.gz"
 
 # 刪除 server 檔案
 
-ssh -tt root@202.182.97.161 "rm -r /var/www/html/blog"
+ssh -tt root@202.182.97.161 "rm -r /var/www/html/blog-host"
 
 echo "remove old files done"
 
 # 搬移到 tomcat 內
 
-ssh -tt root@202.182.97.161 "mv /root/public/ /var/www/html/blog"
+ssh -tt root@202.182.97.161 "mv /root/public/ /var/www/html/blog-host"
 
 echo "move files done"
 
