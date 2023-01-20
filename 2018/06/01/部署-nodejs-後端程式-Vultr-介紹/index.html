@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>部署 nodejs 後端程式 - Vultr 介紹 | Leo Lin&#39;s Blog</title>
+  <meta name="description" content="personal note">
+  <meta name="keywords" content>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="alternate" href="/atom.xml" title="Leo Lin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="我用過的虛擬主機商有 AWS, Google Cloud Platform, 騰訊雲，不過都是用免費的優惠試用一下，用起來都覺得不錯，但是最後都是因為優惠結束，用的又不多，所以就沒有繼續使用了。文章最後再小小抱怨一下。">
+<meta name="keywords" content="Vultr,Godaddy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署 nodejs 後端程式 - Vultr 介紹">
+<meta property="og:url" content="https://blog.hung.services/2018/06/01/部署-nodejs-後端程式-Vultr-介紹/index.html">
+<meta property="og:site_name" content="Leo Lin&#39;s Blog">
+<meta property="og:description" content="我用過的虛擬主機商有 AWS, Google Cloud Platform, 騰訊雲，不過都是用免費的優惠試用一下，用起來都覺得不錯，但是最後都是因為優惠結束，用的又不多，所以就沒有繼續使用了。文章最後再小小抱怨一下。">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://blog.hung.services/blog/images/godaddy-vps-pricing.png">
+<meta property="og:image" content="https://blog.hung.services/blog/images/vultr-vps-pricing.png">
+<meta property="og:image" content="https://blog.hung.services/blog/images/vultr-deploy-step1.png">
+<meta property="og:image" content="https://blog.hung.services/blog/images/vultr-deploy-step2.png">
+<meta property="og:image" content="https://blog.hung.services/blog/images/vultr-deploy-step3.png">
+<meta property="og:updated_time" content="2020-02-01T04:55:51.792Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="部署 nodejs 後端程式 - Vultr 介紹">
+<meta name="twitter:description" content="我用過的虛擬主機商有 AWS, Google Cloud Platform, 騰訊雲，不過都是用免費的優惠試用一下，用起來都覺得不錯，但是最後都是因為優惠結束，用的又不多，所以就沒有繼續使用了。文章最後再小小抱怨一下。">
+<meta name="twitter:image" content="https://blog.hung.services/blog/images/godaddy-vps-pricing.png">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.5/waves.css">
+  <meta name="google-site-verification" content="-sM0OqpCecMqR8zf27_ArdyM6sdbPLYWbZDh1UWULiU">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+  <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57478264-10"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+
+    gtag('config', 'UA-57478264-10');
+    </script>
+</head>
+</html>
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				Leo Lin's Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about'>
+								About
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-ask me' href='/askme'>
+								Ask Me
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about" class="nav-about nav">
+				About
+			</a>
+		
+			<a href="/askme" class="nav-ask me nav">
+				Ask Me
+			</a>
+		
+	</nav>
+</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-部署-nodejs-後端程式-Vultr-介紹"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/2018/06/01/部署-nodejs-後端程式-Vultr-介紹/">
+    	部署 nodejs 後端程式 - Vultr 介紹
+    </a>
+  </h2>
+	<time>
+	  6月 1, 2018
+	</time>
+	
+    
+    <div class='cats'>
+        <a href="/categories/Nodejs/">Nodejs</a>
+    </div>
+
+	</section>
+	
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Godaddy-和-Vultr-價格上的比較"><span class="toc-number">1.</span> <span class="toc-text">Godaddy 和 Vultr 價格上的比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最重要的是網速"><span class="toc-number">2.</span> <span class="toc-text">最重要的是網速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#購買-Vultr-主機"><span class="toc-number">3.</span> <span class="toc-text">購買 Vultr 主機</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#參考資料"><span class="toc-number">4.</span> <span class="toc-text">參考資料</span></a></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p>我用過的虛擬主機商有 AWS, Google Cloud Platform, 騰訊雲，不過都是用免費的優惠試用一下，用起來都覺得不錯，但是最後都是因為優惠結束，用的又不多，所以就沒有繼續使用了。文章最後再小小抱怨一下。</p>
+<a id="more"></a>
+<hr>
+<p>原本是要使用 Godaddy 的架站主機做就好，可是便宜的主機都只支援 PHP，沒辦法另外安裝其他語言的環境，所以我就去找了其他 VPS (Virturl Private Server - 虛擬私人伺服器）服務，有興趣深入瞭解的人可以 Google VPS 就可以看到許多介紹，如果你的需求是<font color="#d9534f">希望開發環境不受限制的虛擬主機</font>，s你就可以考慮 VPS。</p>
+<p>像是 Godaddy 為什麼架站主機那麼便宜，就是因為他限制你只能使用它規定的工具，像是只有 PHP 可以做開發，但是其實大多數需要的工具他也都包含了，像是：FTP, Mail Server, Wordpress 等工具，如果不是像我一樣挑食的話，那個也就夠了。</p>
+<hr>
+<h2 id="Godaddy-和-Vultr-價格上的比較"><a href="#Godaddy-和-Vultr-價格上的比較" class="headerlink" title="Godaddy 和 Vultr 價格上的比較"></a>Godaddy 和 Vultr 價格上的比較</h2><p><a href="https://tw.godaddy.com/hosting/vps-hosting?isc=gofhltw01&amp;currencytype=TWD&amp;slid=&amp;pgrid=46463503647&amp;ptaid=kwd-296914754384&amp;mkwid=sU39wqwPM_pcrid_260523076020_pkw_godaddy_pmt_e_pdv_c_&amp;gclid=CjwKCAjwur7YBRA_EiwASXqIHCh9If4ekNGfXnRW9PhyVLOL2UFL1xnM415xMzIlSSAQYFlUqGlW3xoC8OIQAvD_BwE" target="_blank" rel="noopener">GoDaddy Pricing</a></p>
+<p><img src="/blog/images/godaddy-vps-pricing.png" alt="GoDaddy Pricing"></p>
+<p><a href="https://www.vultr.com/pricing/" target="_blank" rel="noopener">Vultr Pricing</a></p>
+<p><img src="/blog/images/vultr-vps-pricing.png" alt="Vultr Pricing"></p>
+<p>因為我做出來的網站和 API Server 不需要很大的流量，所以我都是從最低價開始考慮，就這兩家比的話，我最後就選了 Vultr，因為硬體速度方面只參考了記憶體（內容 和 Memory)，容量不需要太多，頻寬其實 Vultr 也已經很夠用了，超過那個額度，硬體也應該先撐不住了。</p>
+<p>其實還有許多家，可以 Google VPS 或者虛擬主機商，就有很多選擇。</p>
+<hr>
+<h2 id="最重要的是網速"><a href="#最重要的是網速" class="headerlink" title="最重要的是網速"></a>最重要的是網速</h2><p>影響速度的除了硬體之外，還有就是你主機的位置，像是如果在非洲，就 hmmm…，只記得之前打信長連不上時都被嗆：你非洲線喔！</p>
+<p>每家主機商都有許多位置可供選擇，一般來說選離自己家最近的就好，像我就選的日本。</p>
+<hr>
+<h2 id="購買-Vultr-主機"><a href="#購買-Vultr-主機" class="headerlink" title="購買 Vultr 主機"></a>購買 Vultr 主機</h2><p>Step 1: 選擇國家/地點</p>
+<p><img src="/blog/images/vultr-deploy-step1.png" alt="Vultr Deploy Step1"></p>
+<p>你可以先使用 Vultr 提供的下載速度測試服務檢查適合自己的位置：<a href="https://www.vultr.com/faq/#downloadspeedtests" target="_blank" rel="noopener">連結</a></p>
+<p>Step 2: 選擇作業系統</p>
+<p><img src="/blog/images/vultr-deploy-step2.png" alt="Vultr Deploy Step2"></p>
+<p>Step 3: 選擇 Server 的配置</p>
+<p><img src="/blog/images/vultr-deploy-step3.png" alt="Vultr Deploy Step3"></p>
+<p>Step 4: 選擇額外的需求</p>
+<p>從 server 配置後的部分，我都沒有去做勾選，因為我都還用不到，其實之後要加，也是不難的。</p>
+<p>最後跳到 Step 7</p>
+<p>Step 7: 為自己的機器取個好記的名字</p>
+<p>因為他不是希望你只買一台，現在開發大一點的服務，都是需要多台機器去分攤工作，所以做大了之後，多買幾個 VPS 去擴充也是很常見的。</p>
+<p>Step 8: Deploy Now</p>
+<p>右下角的 Deploy Now 點下去就會開始幫你啟動機器，等一下子就會好了。</p>
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://tw.godaddy.com/?isc=gofhltw01" target="_blank" rel="noopener">Godaddy</a></p>
+<p><a href="https://www.vultr.com/" target="_blank" rel="noopener">Vultr</a></p>
+<p><a href="https://www.inside.com.tw/2017/03/17/how-to-picking-the-right-web-hosting" target="_blank" rel="noopener">如何選擇好的主機商</a></p>
+<hr>
+<p>我自己在 Vultr 日本機器上弄完之後，一開始覺得速度好像有點慢，可是再回去開 Godaddy 的網站，hmm…，好多是比較快的ＸＤ</p>
+<p>在中國的主機商架站絕對不是優先考量，如果你只是要透過 IP 連線是可以考慮，因為如果你要為中國境內的主機加上 Domain 管理，就會被警告要替網站做備案，有點小麻煩就沒弄了，所以問我我也不知道。</p>
+
+  	</div>
+	  
+	  <div class="article-tags tags">
+      
+        <a href="/tags/Vultr/">Vultr</a>
+      
+        <a href="/tags/Godaddy/">Godaddy</a>
+      
+	  </div>
+    
+	</section>
+	
+</article>
+<script>
+	window.subData = {
+		title: '部署 nodejs 後端程式 - Vultr 介紹',
+		tools: true
+	}
+</script>
+
+<!-- disqus -->
+<div class="disqus">
+    <div id="disqus_thread"></div>
+</div>
+
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://githexo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+<!-- <script id="dsq-count-scr" src="//githexo.disqus.com/count.js" async></script> -->
+<!-- disqus end -->
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<div class='header'>Leo Lin</div>
+<div class='content'>
+<div class='desc'>很愛打羽球，大家快找我打羽球！<br><br><a href="./about">想更了解我?</a></div>
+</div>
+</section>
+
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://github.com/contemplator/">
+            <div class='name'>GitHub</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://contemplator20.tumblr.com/">
+            <div class='name'>Tumblr</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/AWS/"><div class='name'>AWS</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Angular/"><div class='name'>Angular</div><div class='badget'>12</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/CSS/"><div class='name'>CSS</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Firebase/"><div class='name'>Firebase</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Git/"><div class='name'>Git</div><div class='badget'>6</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Google/"><div class='name'>Google</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Hexo/"><div class='name'>Hexo</div><div class='badget'>4</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Javascript/"><div class='name'>Javascript</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Markdown/"><div class='name'>Markdown</div><div class='badget'>2</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/MySql/"><div class='name'>MySql</div><div class='badget'>14</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Nginx/"><div class='name'>Nginx</div><div class='badget'>4</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Nodejs/"><div class='name'>Nodejs</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Npm/"><div class='name'>Npm</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/OSX/"><div class='name'>OSX</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Rxjs/"><div class='name'>Rxjs</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/CSS/TBD/"><div class='name'>TBD</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Ubuntu/"><div class='name'>Ubuntu</div><div class='badget'>7</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Visual-Studio-Code/"><div class='name'>Visual Studio Code</div><div class='badget'>4</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Web/"><div class='name'>Web</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/angular/"><div class='name'>angular</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/使用者體驗/"><div class='name'>使用者體驗</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/工作筆記/"><div class='name'>工作筆記</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/日記/"><div class='name'>日記</div><div class='badget'>24</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/羽球日記/"><div class='name'>羽球日記</div><div class='badget'>5</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/讀書筆記/"><div class='name'>讀書筆記</div><div class='badget'>1</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/403/" style="font-size: 14px; color: #808080">403</a> <a href="/tags/Angular/" style="font-size: 14px; color: #808080">Angular</a> <a href="/tags/Blog/" style="font-size: 14px; color: #808080">Blog</a> <a href="/tags/Firebase/" style="font-size: 14px; color: #808080">Firebase</a> <a href="/tags/Github/" style="font-size: 15.2px; color: #666">Github</a> <a href="/tags/Godaddy/" style="font-size: 14px; color: #808080">Godaddy</a> <a href="/tags/Google/" style="font-size: 14px; color: #808080">Google</a> <a href="/tags/Ionic/" style="font-size: 14px; color: #808080">Ionic</a> <a href="/tags/JSON/" style="font-size: 14px; color: #808080">JSON</a> <a href="/tags/Mysql/" style="font-size: 14px; color: #808080">Mysql</a> <a href="/tags/Proxy/" style="font-size: 14px; color: #808080">Proxy</a> <a href="/tags/SSH/" style="font-size: 14px; color: #808080">SSH</a> <a href="/tags/Test/" style="font-size: 17.6px; color: #333">Test</a> <a href="/tags/VPN/" style="font-size: 14px; color: #808080">VPN</a> <a href="/tags/Virtual-Box/" style="font-size: 14px; color: #808080">Virtual Box</a> <a href="/tags/Vultr/" style="font-size: 15.2px; color: #666">Vultr</a> <a href="/tags/access/" style="font-size: 14px; color: #808080">access</a> <a href="/tags/angualr/" style="font-size: 14px; color: #808080">angualr</a> <a href="/tags/angular/" style="font-size: 14px; color: #808080">angular</a> <a href="/tags/array/" style="font-size: 14px; color: #808080">array</a> <a href="/tags/async/" style="font-size: 14px; color: #808080">async</a> <a href="/tags/autocomplete/" style="font-size: 14px; color: #808080">autocomplete</a> <a href="/tags/await/" style="font-size: 14px; color: #808080">await</a> <a href="/tags/branch/" style="font-size: 14px; color: #808080">branch</a> <a href="/tags/cherry-pick/" style="font-size: 14px; color: #808080">cherry-pick</a> <a href="/tags/chrome/" style="font-size: 14px; color: #808080">chrome</a> <a href="/tags/chrome-devTool/" style="font-size: 14px; color: #808080">chrome devTool</a> <a href="/tags/date/" style="font-size: 14px; color: #808080">date</a> <a href="/tags/datetime/" style="font-size: 14px; color: #808080">datetime</a> <a href="/tags/declare-variable/" style="font-size: 14px; color: #808080">declare variable</a> <a href="/tags/deploy/" style="font-size: 14px; color: #808080">deploy</a> <a href="/tags/escape/" style="font-size: 14px; color: #808080">escape</a> <a href="/tags/exception/" style="font-size: 14px; color: #808080">exception</a> <a href="/tags/export/" style="font-size: 14px; color: #808080">export</a> <a href="/tags/filter/" style="font-size: 14px; color: #808080">filter</a> <a href="/tags/function/" style="font-size: 15.2px; color: #666">function</a> <a href="/tags/i18n/" style="font-size: 15.2px; color: #666">i18n</a> <a href="/tags/insert/" style="font-size: 14px; color: #808080">insert</a> <a href="/tags/internationalization/" style="font-size: 15.2px; color: #666">internationalization</a> <a href="/tags/log/" style="font-size: 14px; color: #808080">log</a> <a href="/tags/map/" style="font-size: 14px; color: #808080">map</a> <a href="/tags/merge/" style="font-size: 14px; color: #808080">merge</a> <a href="/tags/migration/" style="font-size: 14px; color: #808080">migration</a> <a href="/tags/plugin/" style="font-size: 14px; color: #808080">plugin</a> <a href="/tags/pm2/" style="font-size: 14px; color: #808080">pm2</a> <a href="/tags/prerouting/" style="font-size: 14px; color: #808080">prerouting</a> <a href="/tags/procedure/" style="font-size: 14px; color: #808080">procedure</a> <a href="/tags/prodecure/" style="font-size: 14px; color: #808080">prodecure</a> <a href="/tags/remote/" style="font-size: 14px; color: #808080">remote</a> <a href="/tags/shortcut/" style="font-size: 14px; color: #808080">shortcut</a> <a href="/tags/snippet/" style="font-size: 14px; color: #808080">snippet</a> <a href="/tags/source-map/" style="font-size: 14px; color: #808080">source map</a> <a href="/tags/store-procedure/" style="font-size: 15.2px; color: #666">store procedure</a> <a href="/tags/timestamp/" style="font-size: 14px; color: #808080">timestamp</a> <a href="/tags/timezone/" style="font-size: 14px; color: #808080">timezone</a> <a href="/tags/tomcat/" style="font-size: 14px; color: #808080">tomcat</a> <a href="/tags/transaction/" style="font-size: 14px; color: #808080">transaction</a> <a href="/tags/vscode/" style="font-size: 14px; color: #808080">vscode</a> <a href="/tags/vultr/" style="font-size: 14px; color: #808080">vultr</a> <a href="/tags/xlf/" style="font-size: 14px; color: #808080">xlf</a> <a href="/tags/偽善/" style="font-size: 14px; color: #808080">偽善</a> <a href="/tags/匯出/" style="font-size: 14px; color: #808080">匯出</a> <a href="/tags/多國語系/" style="font-size: 15.2px; color: #666">多國語系</a> <a href="/tags/大阪/" style="font-size: 20px; color: #000">大阪</a> <a href="/tags/奈良/" style="font-size: 14px; color: #808080">奈良</a> <a href="/tags/宣告變數/" style="font-size: 15.2px; color: #666">宣告變數</a> <a href="/tags/成人世界/" style="font-size: 14px; color: #808080">成人世界</a> <a href="/tags/杭州/" style="font-size: 14px; color: #808080">杭州</a> <a href="/tags/江林/" style="font-size: 14px; color: #808080">江林</a> <a href="/tags/玉山銀行/" style="font-size: 14px; color: #808080">玉山銀行</a> <a href="/tags/結腸性潰瘍/" style="font-size: 18.8px; color: #1a1a1a">結腸性潰瘍</a> <a href="/tags/網站測試工具/" style="font-size: 14px; color: #808080">網站測試工具</a> <a href="/tags/讀書筆記/" style="font-size: 14px; color: #808080">讀書筆記</a> <a href="/tags/責任/" style="font-size: 14px; color: #808080">責任</a> <a href="/tags/跳脫字元/" style="font-size: 14px; color: #808080">跳脫字元</a> <a href="/tags/醫保/" style="font-size: 16.4px; color: #4d4d4d">醫保</a> <a href="/tags/重啟咲良田/" style="font-size: 14px; color: #808080">重啟咲良田</a> <a href="/tags/離職/" style="font-size: 14px; color: #808080">離職</a> <a href="/tags/電信/" style="font-size: 14px; color: #808080">電信</a> <a href="/tags/電影/" style="font-size: 14px; color: #808080">電影</a> <a href="/tags/預儲程序/" style="font-size: 14px; color: #808080">預儲程序</a>
+    </div>
+</div>
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/stkevintan" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://twitter.com/kevinsfork" class="social twitter"
+          target="_blank" rel="external">
+          <span class="icon icon-twitter"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.5/waves.min.js"></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js'></script>
+<!-- <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script> -->
+<script src="/js/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+.aboutme{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+        flex-direction: row;
+}
+.aboutme .avatar{
+    -ms-flex: 1;
+        flex: 1;
+}
+.aboutme .info{
+    -ms-flex: 3;
+        flex: 3;
+}
+
+.aboutme .avatar, .aboutme .info{
+    padding: 20px;
+}
+
+.info .personal-name{
+    font-size: 1.5rem;
+}

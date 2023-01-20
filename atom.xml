@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Leo Lin&#39;s Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.hung.services/"/>
+  <updated>2020-12-18T10:15:10.662Z</updated>
+  <id>https://blog.hung.services/</id>
+  
+  <author>
+    <name>Leo Lin</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux 環境下使用 regex 刪除檔案</title>
+    <link href="https://blog.hung.services/2020/12/18/linux-%E7%92%B0%E5%A2%83%E4%B8%8B%E4%BD%BF%E7%94%A8-regex-%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88/"/>
+    <id>https://blog.hung.services/2020/12/18/linux-環境下使用-regex-刪除檔案/</id>
+    <published>2020-12-18T09:35:12.000Z</published>
+    <updated>2020-12-18T10:15:10.662Z</updated>
+    
+    <content type="html"><![CDATA[<p>查詢檔名符合條件的檔案</p><p>條件為：localhost_access_log..2018*</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls | grep -P &quot;localhost_access_log..2018*&quot;</span><br></pre></td></tr></table></figure><p><img src="/images/regex 刪除檔案01.png" alt="regex 刪除檔案"></p><p>查詢檔名符合條件的檔案並 “刪除”</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls | grep -P &quot;localhost_access_log..2018*&quot; | xargs -d&quot;\n&quot; rm</span><br></pre></td></tr></table></figure><p><img src="/images/regex 刪除檔案02.png" alt="regex 刪除檔案"></p><a id="more"></a><h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><p><a href="https://superuser.com/questions/392872/delete-files-with-regular-expression" target="_blank" rel="noopener">https://superuser.com/questions/392872/delete-files-with-regular-expression</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;查詢檔名符合條件的檔案&lt;/p&gt;
+&lt;p&gt;條件為：localhost_access_log..2018*&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ls | grep -P &amp;quot;localhost_access_log..2018*&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&quot;/images/regex 刪除檔案01.png&quot; alt=&quot;regex 刪除檔案&quot;&gt;&lt;/p&gt;
+&lt;p&gt;查詢檔名符合條件的檔案並 “刪除”&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ls | grep -P &amp;quot;localhost_access_log..2018*&amp;quot; | xargs -d&amp;quot;\n&amp;quot; rm&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&quot;/images/regex 刪除檔案02.png&quot; alt=&quot;regex 刪除檔案&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Ubuntu" scheme="https://blog.hung.services/categories/Ubuntu/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Angular Http Post Request Payload v.s. Form Data</title>
+    <link href="https://blog.hung.services/2020/12/18/Angular-Http-Post-Request-Payload-v-s-Form-Data/"/>
+    <id>https://blog.hung.services/2020/12/18/Angular-Http-Post-Request-Payload-v-s-Form-Data/</id>
+    <published>2020-12-18T09:32:55.000Z</published>
+    <updated>2020-12-18T09:34:34.431Z</updated>
+    
+    <content type="html"><![CDATA[<p>Angular Post Request 的 Header 下的 Content-Type 是 application/json，而且會把參數包在 payload 內。如果你的後端都是使用 request.body 去接參數的話，都會接到空。</p><a id="more"></a><hr><p>以下是將 json 物件資料轉為 x-www-form-urlencoded 傳遞參數的方式</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const options = &#123;</span><br><span class="line">  headers: new HttpHeaders(&#123;</span><br><span class="line">    &apos;Accept&apos;: &apos;application/json&apos;,</span><br><span class="line">    &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded;charset=utf8&apos;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const params = new URLSearchParams();</span><br><span class="line">params.append(&apos;openId&apos;, &apos;user_open_id&apos;);</span><br><span class="line">params.append(&apos;msg&apos;, &apos;hello world&apos;);</span><br><span class="line"></span><br><span class="line">return this.httpClient.post&lt;boolean&gt;(&apos;https://www.example.com/path&apos;, params.toString(), options);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Angular Post Request 的 Header 下的 Content-Type 是 application/json，而且會把參數包在 payload 內。如果你的後端都是使用 request.body 去接參數的話，都會接到空。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Angular" scheme="https://blog.hung.services/categories/Angular/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MySql 檔案還原</title>
+    <link href="https://blog.hung.services/2020/12/18/MySql-%E6%AA%94%E6%A1%88%E9%82%84%E5%8E%9F/"/>
+    <id>https://blog.hung.services/2020/12/18/MySql-檔案還原/</id>
+    <published>2020-12-18T09:23:14.000Z</published>
+    <updated>2020-12-18T09:27:44.838Z</updated>
+    
+    <content type="html"><![CDATA[<p>我原本在本地 Docker 運行一個 redmine 的實體，可是後來某次重開機，mariadb 就一直重啟，無法正常運行，試了很多種方法，就放棄把它運行起來了。</p><p>後來看到好險當初有把硬碟掛載到外面，所以 mariadb 的檔案我還取得的到。</p><a id="more"></a><hr><p>mariadb 的 db 剛好會包成一個資料夾，下面會有一堆 .frm, .ibd 的檔案，跟 mysql 一模一樣。我就想說把這個資料夾搬到我另外一個本地運行的 mysql 就好了。</p><p>以下是我遇到的問題</p><h1 id="權限不對"><a href="#權限不對" class="headerlink" title="權限不對"></a>權限不對</h1><p>因為複製過去後，我的資料夾及檔案權限會變成我電腦的使用者，而不是 _mysql。</p><p>只要使用 chown 及 chmod 就可以解決</p><p>chown：變更資料夾或檔案的擁有者</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R mysql:mysql /data/[db_folder]</span><br></pre></td></tr></table></figure><p>-R 是遍歷資料夾下所有檔案的意思</p><p>chomd：變更資料夾或檔案的使用者權限</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod -R 755 /data/[db_folder]</span><br></pre></td></tr></table></figure><h1 id="表格不存在"><a href="#表格不存在" class="headerlink" title="表格不存在"></a>表格不存在</h1><p>處理好權限不對問題後，就可以在 DB Tool 看到該資料庫（我最近在用 QueryPie 覺得很好用），可是準備要點開各個 Table 檢查資料後，就被提示 Table dosen’t exist 的錯誤，請教了一下 google 大神找到這篇文章：<a href="https://www.itread01.com/content/1547499247.html" target="_blank" rel="noopener">https://www.itread01.com/content/1547499247.html</a></p><p>所以我就把原本舊 DB 下的 ibdata1 這個檔案複製到我新 DB 下，就可以開起來啦～</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我原本在本地 Docker 運行一個 redmine 的實體，可是後來某次重開機，mariadb 就一直重啟，無法正常運行，試了很多種方法，就放棄把它運行起來了。&lt;/p&gt;
+&lt;p&gt;後來看到好險當初有把硬碟掛載到外面，所以 mariadb 的檔案我還取得的到。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="MySql" scheme="https://blog.hung.services/categories/MySql/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MySql 無法啟動問題 - /usr/local/mysql/data directory is not owned by the mysql user</title>
+    <link href="https://blog.hung.services/2020/09/08/MySql-%E7%84%A1%E6%B3%95%E5%95%9F%E5%8B%95%E5%95%8F%E9%A1%8C-usr-local-mysql-data-directory-is-not-owned-by-the-mysql-user/"/>
+    <id>https://blog.hung.services/2020/09/08/MySql-無法啟動問題-usr-local-mysql-data-directory-is-not-owned-by-the-mysql-user/</id>
+    <published>2020-09-08T02:54:35.000Z</published>
+    <updated>2020-09-08T02:56:09.593Z</updated>
+    
+    <content type="html"><![CDATA[<p>主因是因為之前試做一些 python 程式時，因為需要調整環境變數時，動到 /usr/local 的權限了。</p><p>/usr/local 資料夾以及下面的檔案及資料夾擁有者和權限都更動到，導致 /usr/local/mysql/data 的擁有者不再是 mysql</p><p>在 terminal 執行已指令就可以了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R mysql /usr/local/mysql/data</span><br></pre></td></tr></table></figure><p>可以使用 ls -la 檢查擁有者及權限</p><p>參考資料：<a href="https://www.itread01.com/content/1544114825.html" target="_blank" rel="noopener">https://www.itread01.com/content/1544114825.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;主因是因為之前試做一些 python 程式時，因為需要調整環境變數時，動到 /usr/local 的權限了。&lt;/p&gt;
+&lt;p&gt;/usr/local 資料夾以及下面的檔案及資料夾擁有者和權限都更動到，導致 /usr/local/mysql/data 的擁有者不再是 mysql&lt;
+      
+    
+    </summary>
+    
+      <category term="MySql" scheme="https://blog.hung.services/categories/MySql/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>羽雁杯第 20 屆檢討文</title>
+    <link href="https://blog.hung.services/2020/08/17/%E7%BE%BD%E9%9B%81%E6%9D%AF%E7%AC%AC-20-%E5%B1%86%E6%AA%A2%E8%A8%8E%E6%96%87/"/>
+    <id>https://blog.hung.services/2020/08/17/羽雁杯第-20-屆檢討文/</id>
+    <published>2020-08-17T04:04:37.000Z</published>
+    <updated>2020-08-17T09:42:00.149Z</updated>
+    
+    <content type="html"><![CDATA[<p>在外面零打打久了，都打中等程度的場，有點過度自我蓬漲了，原本以為可以打到，但是比賽當天，沒想到是打到倒數幾名…</p><a id="more"></a><hr><p>先說說自己認為有問題地方好了：</p><h2 id="緊張、慢熱"><a href="#緊張、慢熱" class="headerlink" title="緊張、慢熱"></a>緊張、慢熱</h2><p>前面幾場是循環賽，原本就是想要當作熱身，輸掉也屬正常，但是應該要盡可能熟悉場地和比賽用球。在比賽前的熱身非常短，全部採用拉長球的方式熱身有點失策，因為對於網前、平抽和跑動就沒有熟悉到，應該每種球路都應該嘗試幾球，有跑動也比較可以把身體熱開，不應該怕浪費體力，另外長球打法也應該使用比賽常打出來的平快球，而不是拉高。</p><p>星期天參與了動態羽球館的教練場加暢打，教練場練習了第一輪雙打攻擊輪轉，才第一輪就有點喘，原本以為是自己的體力太差，但輪過幾輪後才發現，這才是適合我的熱身方式，我應該先趕快讓自己的腳和手都快起來，熟悉快球路，這樣在正式比賽時，才可以適應對方殺球還有自己進攻的節奏。一開始就喘沒關係，因為我自認自己在回復體力上還蠻快的，且在場上遇到的對手，運動量通常沒有我多。</p><p>結論：熱身時應該每種球路多嘗試，最好可以熱身到跑動的階段。</p><h2 id="重輕拍的切換"><a href="#重輕拍的切換" class="headerlink" title="重輕拍的切換"></a>重輕拍的切換</h2><p>從舊拍 86g 換到 83g 的新拍已經過了快一個月，已經沒有了當初拿到新拍時那種輕盈感，賽前還覺得有點重了。在週日的練習中，試著先拿了舊拍去打，接著再換成輕拍，那種輕盈感又回來了，而且沒有重新抓取球點的問題。</p><h2 id="我方處於弱勢時的處理"><a href="#我方處於弱勢時的處理" class="headerlink" title="我方處於弱勢時的處理"></a>我方處於弱勢時的處理</h2><p>一整天比賽下來，聽到其他同伴對我混雙搭擋有個心得，就是我的混雙搭擋在認知到對面實力比她厲害時經常發生不可預期的錯誤，像是出界的誤判、發力的拿捏，我自己也都沒有意識到這一點，我知道自己在打比自己弱的隊伍時會比較放心，打的球就比較慢、而且穩定，也是因為配得切和殺球比較少的原因，可是今天打下來，發現除了緊張之外，我也不敢打容易失誤的球，導致我方一直處於被動的狀態，輸掉的那兩場，有蠻多分數是對方失誤的得分。</p><p>到了倒數第二場，其實沒有比較弱勢的情況，可是在 10 分食，比分一直咬得很近，但是這一場我一直有個壓力，就是不可以讓對手拿超過 13 分，原本在對手拿到 11 分時，我們連續拿了 8 分，可惜最後我的發球掛網，導致後面停止拿分，變成雙方互相得分，最後 21:17 的樣子，還是讓對手拿了超過 13 分，輸掉那一局的團體賽。</p><p>我在還沒有賽末點時，終場可能互拿 10 分時，其實容易被一波帶走，常常是在比賽一開始或者比賽最後才有連續得分，就變成分數的拉鋸戰，常常不敵壓力，一連掉好幾分。</p><p>自己在比分很近時，常常在接發球發生失誤，目前還在找改善的方法。</p><h2 id="無法保持大幅度領先"><a href="#無法保持大幅度領先" class="headerlink" title="無法保持大幅度領先"></a>無法保持大幅度領先</h2><p>不管自己以什麼心態去打球，輕鬆打還是積極進攻去打，後來發現分差還是一直拉不開，變成自己在打後場跑位不好的對手才有機會有很高的勝率，其他類型的對手，都用太固定的打法，沒有打亂對手的節奏或跑位，都很難把對方一波帶走。</p><h2 id="羽雁杯"><a href="#羽雁杯" class="headerlink" title="羽雁杯"></a>羽雁杯</h2><p>大學畢業後第一次參加團體賽，能夠第一次就參加羽雁杯真的覺得很幸運，因為賽制的關係，讓每一個隊伍都打一樣多的場次，不管是第一名還是最後一名，都打一樣多的場次，單淘汰賽也不會因為打輸就沒有下一場，仍然會讓輸掉的隊伍在打一場，打出後面的名次。</p><p>另外，雖然是團體賽，可是不是取三戰兩勝，而是計算三點的總積分，所以非常看重實力，而不會有策略排點，導致有棄點仍可以取勝的情況，但也凸顯出，如果不穩定，分數無法拉近而取得太少，就會變成兩勝一敗仍輸掉團體賽的局面。</p><p>除了賽制之外，參賽講也都很執得，除了參賽會取得的賽服之外，每個人也可以參加抽獎，價值都在 300 以上，而且因為辦的很多屆的關係，所以也很多贊助商會提供免費的餐點，整個氣氛都非常的好。</p><p>希望下一屆還可以繼續參加，看是否可以打到更好的名次。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在外面零打打久了，都打中等程度的場，有點過度自我蓬漲了，原本以為可以打到，但是比賽當天，沒想到是打到倒數幾名…&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="羽球日記" scheme="https://blog.hung.services/categories/%E7%BE%BD%E7%90%83%E6%97%A5%E8%A8%98/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>2020 年中檢討</title>
+    <link href="https://blog.hung.services/2020/07/25/2020-%E5%B9%B4%E4%B8%AD%E6%AA%A2%E8%A8%8E/"/>
+    <id>https://blog.hung.services/2020/07/25/2020-年中檢討/</id>
+    <published>2020-07-25T07:41:32.000Z</published>
+    <updated>2020-07-25T08:07:28.661Z</updated>
+    
+    <content type="html"><![CDATA[<div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="請輸入四碼生日" />    <label for="pass">請輸入四碼生日</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">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</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      此文章已經被加密，進入後請輸入密碼
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>真相與正義 - 直言真相</title>
+    <link href="https://blog.hung.services/2020/02/09/%E7%9C%9F%E7%9B%B8%E8%88%87%E6%AD%A3%E7%BE%A9/"/>
+    <id>https://blog.hung.services/2020/02/09/真相與正義/</id>
+    <published>2020-02-09T09:36:02.000Z</published>
+    <updated>2020-02-09T10:47:27.243Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近因為一些原因，可以免費看 Apple TV+，我就上平台隨意找了一些可能會有興趣的影集看看，我看的是「直言真相」。</p><p>如果真相是有違你心中正義的，你還願意相信這個真相？還是你會重新定義你認為的正義？</p><p>真相是客觀的，正義是主觀的，只要是主觀的，是不是就很難做到所有人都認同？</p><p>是不是真有人有辦法，做到完全的客觀？公視可以嗎？教科書可以嗎？</p><p>以下有雷，怕雷者不要點開</p><a id="more"></a><hr><p>這是在講述一個播客 (Podcast) 重新調查一件她 20 年前曾經報導過的刑事案件，多年後的現在，因為一個陳年的證據被翻出來，讓她重新思考她 20 年前的報導是否不顧真相，太過偏頗。</p><hr><p>我其實沒有多希望這部影集可以帶給我什麼新的觀點，</p><p>這就是一部翻案的故事，沒有什麼驚人的推理，調查的故事也沒有像是偵探或者刑警那樣鉅細彌遺，事件最後能夠水落石出，只是因為運氣好以及故事需要。</p><p>之所以會讓我一直想要看下去的動力，是我看到這部戲有深刻描寫，或者淡淡的暗示到我對於社會所不暸解的一面。</p><p>以下為了方便我分辨誰是誰，我列一下提到的角色：</p><ul><li>播客 - 帕琵·帕奈爾（Poppy Parnell），簡稱 帕琵</li><li>被定罪的兇手 - 沃倫·凱夫（Warren Cave），簡稱沃倫</li><li>被殺害的知名作家的大女兒 - 簡稱蘭妮</li><li>被殺害的知名作家的小女兒 - 簡稱嬌西</li></ul><h2 id="最初的偏頗報導"><a href="#最初的偏頗報導" class="headerlink" title="最初的偏頗報導"></a>最初的偏頗報導</h2><p>這一個部分沒有在劇情內很詳細地被說到，但有幾個點讓我很在意：</p><ol><li>一個 16 歲的少年，最後被以成人的身份進行審判。</li><li>最後的判決是無期徒刑，且不可假釋。</li><li>播客不斷強調他把一個素昧平生的人描寫成一個嗜血殘忍的惡魔。</li><li>凶器沒有找到，最有力的證據是被害人家屬的目擊證詞。</li></ol><p>就我在台灣新聞上所看到的，謀殺很少被判到無期徒刑，而且還判決在一個青少年的身上。</p><p>到底是有什麼樣的報導，並且激起什麼樣的輿論，才會讓一個青少年面臨無期徒刑的判決？這是我一直很像在劇情中看到的，不過最後應該只是劇情上的需要，沒有實際上存在的必要，發生的機率也微乎其微，但我不敢說這一定不會發生在真實世界。</p><p>綜合以上在意的點，以及在劇情中看到不斷提醒觀眾的說詞，我確信，這是關於種族對立的故事。</p><p>播客對這名青少年並沒有深仇大恨，只是因為膚色的不同，以及這個報導的成敗足以影響她未來的人生發展。所以，她只靠著警方對外的說法以及提供的證據，儘管對於是否能夠判決一個人是否有罪是明顯不足的，就把一個白人青少年描寫成一個殺人魔。</p><h2 id="納粹與雅利安兄弟會"><a href="#納粹與雅利安兄弟會" class="headerlink" title="納粹與雅利安兄弟會"></a>納粹與雅利安兄弟會</h2><ol><li>帕琵在一開始，歷盡千辛萬苦終於取得和沃倫的面見機會，可是當沃倫開始展示他的刺青，帕琵直接掉頭走人？</li><li>當帕琵試著要向監獄內傳遞訊息給沃倫時，為什麼不直接找他有在經營幫派的父親幫忙，和他們的幫派有什麼關係？</li></ol><p>在台灣，我只在歷史課本上稍微讀過德國納粹的事情，以及從看過的電影了解一二，至於在新聞上看到有人 Cosplay 或者談論到的經驗就不提了，總歸一句，其實在我生長的環境中，很難理解外國人對於納粹極度反感的反應。但是就讓我想起，就在幾年之前，台灣新聞才報導過有國外網友，對於學生用戲謔的心態去看待納粹這個象徵意義非常憤怒，也有台灣官員跳出來說這些學生實在是太沒有國際觀了。<a href="https://www.youtube.com/watch?v=GntZ6TbVzS0" target="_blank" rel="noopener">當年的新聞報導</a></p><p>其實我自己本身對國外的歧視、種族對立也無法說感同身受，可以說是完全無法理解，以及有動力去理解。直到長大了，看到我覺得無法理解的戲中橋段。</p><p>以下連結可能有些人不喜歡或無法適應，請斟酌點開：</p><p><a href="https://kknews.cc/zh-tw/world/brnrbj.html" target="_blank" rel="noopener">雅利安兄弟會</a><br><a href="https://zh.wikipedia.org/wiki/%E7%BA%B3%E7%B2%B9%E4%B8%BB%E4%B9%89" target="_blank" rel="noopener">納粹主義</a></p><p>對於在台灣完全不特別的成長環境，要了解這些，只能透過很片面、很教科書上的了解，儘管我是台中人、曾經去過監獄當過替代役，我還是無法想像在電影中上演的監獄幫派情節。希望我和大多數的人都可以不用經歷這些過完這一生。</p><h2 id="最後真相大白了嗎？"><a href="#最後真相大白了嗎？" class="headerlink" title="最後真相大白了嗎？"></a>最後真相大白了嗎？</h2><p>前一半的集數，都在花很多間鋪陳以及營造沃倫的父親才是兇手，他有十足的動機，以及他各種處心積慮的威脅和阻擋帕琵以及沃倫繼續調查。結果沃倫的父親只是當天撞到了一個同一條街上的小孩，因為怕自己的肇事逃逸事件曝光，才指認他兒子（沃倫）讓他入獄，藉以用更吸引人的焦點，模糊一個肇事逃逸的事件。</p><p>後來又有大約 2 集的時間，在鋪陳蘭妮的媽媽是因為保護女兒免於再次遭受爸爸的傷害，所以選擇殺害了父親。</p><p>最後的結局證明前面的猜測都是錯的，最後殺人的兇手，不是沃倫、不是沃倫父親、也不是蘭妮或蘭妮他媽媽，是看似無害、千法百計要逃離蘭妮的嬌西。</p><p>而嬌西殺害自己的父親，又完全是一個誤會，因為蘭妮是一個極度希望她人關注的性格，造成他經常性的說謊，所以他被家裡的人排擠，而且又騙了嬌西說父親長年性侵蘭妮，儘管嬌西一開始是否定這個說法的，但是看到父親和蘭妮在拉扯，嬌西也一下失去的理智，殺害了父親。</p><p>最後的真相是蘭妮才是一切的罪魁禍首，儘管她做了偽證，用計讓她媽媽不小心服了過量的止痛藥，可是如果舉發了蘭妮，可憐的嬌西仍要面臨殺人的刑責。這讓帕琵有點難已決定該怎麼做。</p><p>幸好最後有了一個還算令人滿意的結局。</p><p>上面這個說法，不知道是不是大家都滿意？</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近因為一些原因，可以免費看 Apple TV+，我就上平台隨意找了一些可能會有興趣的影集看看，我看的是「直言真相」。&lt;/p&gt;
+&lt;p&gt;如果真相是有違你心中正義的，你還願意相信這個真相？還是你會重新定義你認為的正義？&lt;/p&gt;
+&lt;p&gt;真相是客觀的，正義是主觀的，只要是主觀的，是不是就很難做到所有人都認同？&lt;/p&gt;
+&lt;p&gt;是不是真有人有辦法，做到完全的客觀？公視可以嗎？教科書可以嗎？&lt;/p&gt;
+&lt;p&gt;以下有雷，怕雷者不要點開&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>2020 新年新希望</title>
+    <link href="https://blog.hung.services/2020/02/02/2020-%E6%96%B0%E5%B9%B4%E6%96%B0%E5%B8%8C%E6%9C%9B/"/>
+    <id>https://blog.hung.services/2020/02/02/2020-新年新希望/</id>
+    <published>2020-02-02T06:02:32.000Z</published>
+    <updated>2020-03-08T04:12:00.907Z</updated>
+    
+    <content type="html"><![CDATA[<div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="請輸入四碼生日" />    <label for="pass">請輸入四碼生日</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">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</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      此文章已經被加密，進入後請輸入密碼
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>2019/10 大阪自由行整理</title>
+    <link href="https://blog.hung.services/2020/02/02/2019-10-%E5%A4%A7%E9%98%AA%E8%87%AA%E7%94%B1%E8%A1%8C%E6%95%B4%E7%90%86/"/>
+    <id>https://blog.hung.services/2020/02/02/2019-10-大阪自由行整理/</id>
+    <published>2020-02-02T04:54:25.000Z</published>
+    <updated>2020-02-02T05:40:53.593Z</updated>
+    
+    <content type="html"><![CDATA[<p>遲來的自由行整理，總共換了 70000 的日幣出國，差不多花光光，而且中間有一度擔心錢不夠用，不過後來幾天還是在吃很多好料還有買了好幾個伴手禮中結束了。</p><a id="more"></a><hr><p>開銷整理請看 <a href="https://docs.google.com/spreadsheets/d/1tgeDjeX2Xubmn8tTpsaEdibjdspyEPh71l2L6EIS_9s/edit?usp=sharing" target="_blank" rel="noopener">開銷總整理</a></p><h3 id="日幣花費"><a href="#日幣花費" class="headerlink" title="日幣花費"></a>日幣花費</h3><p><img src="/blog/images/201910DaBanJapanese.png" alt="日幣花費"></p><h3 id="所有項目換算為台幣後的花費"><a href="#所有項目換算為台幣後的花費" class="headerlink" title="所有項目換算為台幣後的花費"></a>所有項目換算為台幣後的花費</h3><p><img src="/blog/images/201910DaBanTaiwanese.png" alt="台幣花費"></p><hr><p>這次的住宿沒有在台灣就先刷卡，是到日本後才付現金的，所以現金有一大部分花在住宿，不過這次有夥伴一起去，有稍微划算一點。</p><p>交通大部分還是在機票，這次比較少長距離的移動，大多是靠電車、地點就可以到了，沒有之前搭新幹線跑半個日本那個誇張。</p><p>如預期的，大部分的現金都拿來付吃好料的上面了，中間怕現金不夠，還有幾次是用刷卡的…</p><p>在整理開銷時覺得奇怪，明明只換了 70000 日幣過去，可是最後卻花超過我換的金額，可能是我跟我的夥伴在拆帳上面有點問題。</p><p>在一個禮拜的行程中，只換了 70000 日幣過去好像真的有點抖，下次要學乖一點，多換一點，不然在國外沒錢之得很囧，雖然很多地方可以用信用卡付掉，但是如果沒有折扣，感覺會被多砍一次手續費的問題。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;遲來的自由行整理，總共換了 70000 的日幣出國，差不多花光光，而且中間有一度擔心錢不夠用，不過後來幾天還是在吃很多好料還有買了好幾個伴手禮中結束了。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="日記" scheme="https://blog.hung.services/categories/%E6%97%A5%E8%A8%98/"/>
+    
+    
+      <category term="大阪" scheme="https://blog.hung.services/tags/%E5%A4%A7%E9%98%AA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>黑門市場有點黑</title>
+    <link href="https://blog.hung.services/2019/11/23/%E9%BB%91%E9%96%80%E5%B8%82%E5%A0%B4%E6%9C%89%E9%BB%9E%E9%BB%91/"/>
+    <id>https://blog.hung.services/2019/11/23/黑門市場有點黑/</id>
+    <published>2019-11-22T16:16:51.000Z</published>
+    <updated>2020-02-01T04:55:51.793Z</updated>
+    
+    <content type="html"><![CDATA[<p>某個早餐決定去走一圈黑門市場當吃早餐，ㄧ走進去，就看到一堆人直接在路上吃起來，難不成我應該要直接自備一碗白飯從街頭吃到巷尾？</p><a id="more"></a><p>我們在黑門市場吃了神戶牛肉片、烤扇貝、關東煮、哈密瓜、豆漿、茶碗蒸、烤豬肉和假的蟹肉棒。說真的，很多覺得不划算，沒到那個價位，絕對不是日本物價比較高，而是在日本這個隨便吃都好吃的地方，這些好像太普通了，而且又有點小貴。</p><p>神戶牛真的後悔，六小片要2000，不如晚上吃的燒肉吃到飽</p><p>藥妝的購物籃要裝什麼？</p><p>我記得我上次自己去北海道，原本也是想上網看看大家都說什麼必買，可是研究了很久，還是不知道買什麼回去對自己還是朋友有幫助，最後只買了一些東西，結果還被店員請到另外一個當地人結帳的通道，因為我買的東西太少，根本不能免稅。</p><p>這次我只是跟著我同伴來的，而且她還讓我幫她湊金額，我除了幫我哥買腸胃藥，還有我自己要買的拭鏡紙，其他都是買好玩的，像是清除黑頭還是粉刺的東西，還買了一罐可以擦肌肉酸痛的，其他看了真的不知道是什麼作用的，我同伴最後她的東西加上我的，也才日幣22000左右，根本不可能到3萬或5萬啊？大家到底都來掃什麼貨啊？感覺買10萬差不多就把一間店買下來了吧！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;某個早餐決定去走一圈黑門市場當吃早餐，ㄧ走進去，就看到一堆人直接在路上吃起來，難不成我應該要直接自備一碗白飯從街頭吃到巷尾？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="日記" scheme="https://blog.hung.services/categories/%E6%97%A5%E8%A8%98/"/>
+    
+    
+      <category term="大阪" scheme="https://blog.hung.services/tags/%E5%A4%A7%E9%98%AA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>兩次燒肉，吃到飽不一定要吃到飽，沒有吃到飽，不一定吃不飽</title>
+    <link href="https://blog.hung.services/2019/11/22/%E5%85%A9%E6%AC%A1%E7%87%92%E8%82%89%EF%BC%8C%E5%90%83%E5%88%B0%E9%A3%BD%E4%B8%8D%E4%B8%80%E5%AE%9A%E8%A6%81%E5%90%83%E5%88%B0%E9%A3%BD%EF%BC%8C%E6%B2%92%E6%9C%89%E5%90%83%E5%88%B0%E9%A3%BD%EF%BC%8C%E4%B8%8D%E4%B8%80%E5%AE%9A%E5%90%83%E4%B8%8D%E9%A3%BD/"/>
+    <id>https://blog.hung.services/2019/11/22/兩次燒肉，吃到飽不一定要吃到飽，沒有吃到飽，不一定吃不飽/</id>
+    <published>2019-11-22T15:56:37.000Z</published>
+    <updated>2020-02-01T04:55:51.786Z</updated>
+    
+    <content type="html"><![CDATA[<p>這次來日本吃了兩次燒肉，第二次其實有點意外，當時其實想吃壽喜燒，第一家壽喜燒太貴，第二家要等太久，所以該吃別家燒肉。</p><a id="more"></a><p>第一家吃的是心齋橋的力丸，態度真的沒有多好，但有個女店員很客氣，但其實男店員也經常會巡視有沒有要點餐或整理桌面，其實沒有很差啦！不然就是今天客人不多，他們還沒有累到需要臭臉趕客人。</p><p>看到菜單有高級肉，還有根據之前吃到飽的經驗，直接腦抽來了一份牛肋條、牛橫隔膜、牛舌、豬里肌、高級豬，以為是來台灣吃到飽那種薄薄的肉，結果來的都是厚實的肉，加起來應該跟我整隻手一樣大，心想：該不會第一輪點餐就吃飽了吧？</p><p>牛舌好吃到直接讓同伴從不敢吃牛舌變成愛吃牛舌，牛肋條吃起來還很爽，油滋滋的，後來越吃越膩，吃到後面的豬有點懷疑人生，幹嘛點豬？還有，我們應該點拼盤的，他一份牛肋條2000，橫隔膜也快2000呀，其他的肉還沒試到呀！</p><p>幸好這一天腸胃和喉嚨表現出乎預期的好，可以吃到第二輪的肉，只是不知道有沒有吃到那個8000多日幣的價值，果然自己很不適合吃吃到飽，最後都在吃菜、豆腐、冰淇淋。對了，除了肉，其他都普普，最後的加點只能一人一道菜。</p><p>還是好像多吃一點牛舌，之前在仙台吃過牛舌之後，真的覺得牛舌才是真愛，其他太容易膩了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;這次來日本吃了兩次燒肉，第二次其實有點意外，當時其實想吃壽喜燒，第一家壽喜燒太貴，第二家要等太久，所以該吃別家燒肉。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="日記" scheme="https://blog.hung.services/categories/%E6%97%A5%E8%A8%98/"/>
+    
+    
+      <category term="大阪" scheme="https://blog.hung.services/tags/%E5%A4%A7%E9%98%AA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NIFREL 活生生的博物館</title>
+    <link href="https://blog.hung.services/2019/11/22/NIFREL-%E6%B4%BB%E7%94%9F%E7%94%9F%E7%9A%84%E5%8D%9A%E7%89%A9%E9%A4%A8/"/>
+    <id>https://blog.hung.services/2019/11/22/NIFREL-活生生的博物館/</id>
+    <published>2019-11-22T15:55:46.000Z</published>
+    <updated>2020-02-01T04:55:51.778Z</updated>
+    
+    <content type="html"><![CDATA[<p>說好的水裡生物，可以記起來只有喜歡吃皮屑的魚、好像在交配的海馬、看著看著有點想睡覺、但是又有點癡迷的水母螺旋流。其他大概還有2.30種的魚都記不起來。</p><a id="more"></a><p>後來有個夢幻時刻，可以在那邊坐著10分鐘看精美的動畫，使用上3下3個投影機投影出一顆球的動畫，另外使用上2個投影機投影出底版的一個圓形動畫，看得我目光迷離，很美，可是看不個所以然，可能我沒有當國文老師或作家的天份。</p><p>後面四個主題都是活生生（？）的動物，陸上（？）動物，第一隻就是鎮館之寶，白虎（吼嘎～）（X）（喵～）（O），真的爆大隻的，白色的毛看起來也超乾淨的，感覺就超好摸，可惜這隻貓真的太大，很有壓迫感，給我養也不敢養，我狗派的！看到牠抱著食物吃，覺得超可愛（現代人到底怎麼了，如果現代人看到恐龍在吃肉會覺得可愛嗎？）我們也很有幸的看到大貓咪在翻滾的樣子，是在討摸摸嗎？還有那個出浴露背貌，哇噻！好苗條哦！可惜是隻雄的。白虎的對面不是青龍，但也蠻像的，一隻不會動的鱷魚⋯，要不是看到牠的皮膚表面在有規律的鼓動，以為館方幹嘛把標本放在水裡，不會容易壞掉嗎？</p><p>後來進到下一個區域，被兩個自動門給關住，不是可以直接走過去的，自動門之間還有垂珠擋住，很像就是要走進另外一個閒雜人等與狗不得入內的地方，原來是個可愛動物園區，可以微接近動物，看你理解成稍微靠近一點的距離，還是離零距離還有段距離的靠近動物，都行。因為感覺可以伸手就可以摸到他們，但是又不可以伸手，那種曖昧的距離感，一堆狐朦、企鵝、海獺，一隻水豚、兩隻不知道什麼鳥、兩隻水獺，嗯，不能摸，擺那麼近幹嘛啊（垂地）！不過幸好沒猴子，不然牠靠過來我肯定反射動作揮拳。</p><p>NIFREL 出來就是兩個1/2還是1/10點鋼彈，不知道鋼彈到底多大，比例只好亂抓，反正好像有兩層樓那麼高吧，打爆巨石強森分分秒秒的事情，原本是想直接買個回去組的，可是查了一下台灣可以買到的價格，直接斷捨離，價格差不多呀，網路上買還比較便宜。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;說好的水裡生物，可以記起來只有喜歡吃皮屑的魚、好像在交配的海馬、看著看著有點想睡覺、但是又有點癡迷的水母螺旋流。其他大概還有2.30種的魚都記不起來。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="日記" scheme="https://blog.hung.services/categories/%E6%97%A5%E8%A8%98/"/>
+    
+    
+      <category term="大阪" scheme="https://blog.hung.services/tags/%E5%A4%A7%E9%98%AA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>奈良鹿，你可以不要假敬禮真頂撞嗎？</title>
+    <link href="https://blog.hung.services/2019/11/22/%E5%A5%88%E8%89%AF%E9%B9%BF%EF%BC%8C%E4%BD%A0%E5%8F%AF%E4%BB%A5%E4%B8%8D%E8%A6%81%E5%81%87%E6%95%AC%E7%A6%AE%E7%9C%9F%E9%A0%82%E6%92%9E%E5%97%8E%EF%BC%9F/"/>
+    <id>https://blog.hung.services/2019/11/22/奈良鹿，你可以不要假敬禮真頂撞嗎？/</id>
+    <published>2019-11-22T15:55:02.000Z</published>
+    <updated>2020-02-01T04:55:51.787Z</updated>
+    
+    <content type="html"><![CDATA[<p>有一天我們決定去奈良找鹿玩，還有看看春日大社和東大寺。</p><a id="more"></a><p>從難波搭近鐵到奈良出站往東走，很多就可以看到鹿在路上被餵食中，但是鹿兒餅已經漲價了，不是網路上找到的200日幣，但是其實還在可以接受的範圍，很多人直接刷一排鹿兒餅給鹿吃，很多人直接被鹿包圍，鹿直接就在賣鹿兒餅的攤販前顧著，看到有人買鹿兒餅，就沒在跟你客氣的，一種要吃掉你的手指和包包的氣勢跟你蹭吃的，我們抱著這群鹿已經被其他人餵飽的信念直接去春日大社看看，一路上還是常常看到很多鹿，這邊的就還蠻自然的，大多都在樹旁邊休息，不過在進去春日大社前有看到一群鹿在一個賣鹿兒餅的攤販前，結果都沒有人要買，鹿就一直靠在攤販前，結果攤販的爺爺就不爽了，直接掄起掃帚直接驅之別院，重重舉起、輕輕落下，往鹿的屁股拍下去。</p><p>春日大社就是一堆神社，各種神社，還有很多類似光明燈的存在，不過算是值得花門票進去看的，想要拍美美的照還是可以的，有個暗室氣氛很棒。</p><p>今天星期三原本是要去一個有名的茶屋喝茶吃糰子，可是剛好沒開，殘念跌屎。</p><p>下午也要去千壽庵吃好吃的蕨餅，但是星期三也不開放內用，某斗殘念跌屎，不過店員可能看我看了蕨餅很久，都不知道要買啥，決定拿給我試吃，不吃還好，一吃不得了，一試成主顧，直接刷一排蕨餅，這是什麼茶點，不是餅乾也不是蛋糕，也不是什麼粉一堆的糕點（但它也是粉一堆），外表很像台灣的麻糬沾花生粉，可是口感不一樣，吃下去也不會膩，應該可以直接吃掉3000日圓，放在嘴裡真的就是舌頭上下壓一下就化開了，很像入口即化的感覺，但又不是入口即化，不是什麼油膩膩還是快溶掉的巧克力，就是個老少鹹宜、鈔票換毒品的超高校級茶點。買了四盒之後，後來的幾天，常常越想越不對勁，是不是買太少了？大福什麼的，有點容易膩啊！</p><p>東大寺越逛人生越迷茫，門票還是不知道600和1000的差別？為什麼一堆人無法從洞裡爬出來，一定要有人拉才拉得出來？為什麼我要在裡面買了一件2500一即是全，全即是一的衣服？為什麼東大寺外面的鹿好像真的成精了，鹿兒餅在面前藏起來也沒用？為什麼我包包裡的鹿兒餅牠卻無法察覺，我以為動物的鼻子很厲害？</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有一天我們決定去奈良找鹿玩，還有看看春日大社和東大寺。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="日記" scheme="https://blog.hung.services/categories/%E6%97%A5%E8%A8%98/"/>
+    
+    
+      <category term="奈良" scheme="https://blog.hung.services/tags/%E5%A5%88%E8%89%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1.5日大阪環球影城+萬聖節快速通關</title>
+    <link href="https://blog.hung.services/2019/11/22/1-5%E6%97%A5%E5%A4%A7%E9%98%AA%E7%92%B0%E7%90%83%E5%BD%B1%E5%9F%8E-%E8%90%AC%E8%81%96%E7%AF%80%E5%BF%AB%E9%80%9F%E9%80%9A%E9%97%9C/"/>
+    <id>https://blog.hung.services/2019/11/22/1-5日大阪環球影城-萬聖節快速通關/</id>
+    <published>2019-11-22T15:24:59.000Z</published>
+    <updated>2020-02-01T04:55:51.772Z</updated>
+    
+    <content type="html"><![CDATA[<p>我們抵達日本後的隔一天行程就是直接安排1.5日的大阪環球影城，難波到環球影城稍遠，還要轉至少一次車，不過除了住在環球影城旁邊之外，好像都是如此。</p><a id="more"></a><p>第一天我們是15:00之後才可以入場，所以快速通關有一個已經玩不到了，可是其實下午之後，影城的人會超爆多，因為學生、上班族也會這時候進去玩，所以幾乎每個遊戲都要排一個小時以上的隊伍，幸好是有快速通關才有玩到4個關卡。真的不建議在裡面吃東西，又貴又吃不飽，只有可樂跟外面價格差不多，還有一堆折扣搞不懂。</p><p>我好像國小之後就沒有去過遊樂場，國、高中畢旅應該有去過，可是卻一點印象都沒有，這次來影城，完全就是一個不同的概念，在裡面完成是另外一個世界，而且不同區塊，又是不同的世界，還記得在買環球影城的票時，根本搞不懂快速通關、各個主題的區分，真的要進來走個一圈才終於知道地圖和票在說什麼。</p><p>第一天半天的萬聖節關卡還蠻有趣的，而且都很不刺激，只是有點恐怖，不過都還可以接受，滿滿的鬼屋感，有些身歷其境、有些就是4D體驗，覺得小孩子也很適合（像是我）。不過可能長大後（經過社會的歷練），好像真的不太怕鬼，所以鬼屋都可以小小的被嚇到幾次繼續走完，好險沒有什麼像是密室逃脫要解題，不然可能會卡在裡面很久。晚上之後，很多關卡都會換成其他的，可能是配合萬聖節吧？所以有些就是等隔天整天的行程才能玩到。</p><p>隔天一大早就坐車到大阪環球影城，大概是8點左右到，同伴很想要早上6點就到，不過可能想到我其實沒那麼瘋遊樂場，所以勉為其難的八點才到，幸好那天剛好下雨，人真的不多，住的青旅其實也有提供愛心傘（不過這件事情我們是在回來之後才發現），我還在外面買了一個恐龍頭套戴著進去，因為其實昨天下午進場時，超多人都是萬聖節裝扮或者穿著環球影城的周邊進去，超有過節的感覺。所以我今天也直接大撒必花了3500日幣戴著頭套進去，用了一個可以保暖頭部的理由。但是，真的只有一點保暖效果，而且戴完很像戴完安全帽的感覺，頭髮都被壓扁了。早上的人潮和昨天差很多，原本想說要去搶哈利波特的整理券，但是其實根本不用搶就可以直接進去，遊戲也都不用排隊，看到10分鐘的等待時間，都只是關主在等人潮多一點才開始的等待時間，好險第二天沒買什麼快速通關和一大早天未亮就出門，根本超幸運。去玩完哈利波特後有個小插曲，就是我把所有貴重物品都忘在櫃子了，差點以為第三天就要跑領事館了，幸好大家都只是從自己櫃子拿走自己的東西而已，我的東西只是都被推的更裡面而已，真的是幸運值都點滿了。</p><p>第二天因為早上人很少，所以我們都直奔熱門遊戲，可是廢物如我，我竟然玩完第一個哈利波特就開始想吐，第二個黑洞就快死掉，第三個蜘蛛人直接陣亡吃午餐，原本以為是自己的小腦廢了，吃完午餐後繼續挑戰，開始覺得應該是早餐吃太少，血糖太低了，所以奉勸大家在搭車或者可能被動暈車時，一定要多吃點東西。</p><p>一路把網路上的人推薦的玩完之後發現，好像遊戲的核心技術差不多，只是劇情有點不同，除了什麼飛天翼龍和好萊塢就是雲霄飛車外（太恐怖 沒有去挑戰），飛天的鷹馬我也沒去 哈哈。</p><p>下午3點前的遊行還不錯，好像是第一次參加遊行，之前只是參加什麼運動會、太陽花，感覺去都沒有很嗨或者什麼，本身跟這種很需要跳起來嗨的活動絕緣，這次應該同伴拉著下去才跟著體驗在隊伍裡面，不然可能也是在旁邊看大家嗨到ㄎㄧㄤ掉。遊行內容本身可能沒有遊行關卡豐富，可是只要一直重複的歌曲和舞蹈，就讓旁邊的人也可以輕易融入，如果不融入也沒關係，拿著單眼在旁邊拍照，遊行的工作人員也會湊過去給你拍，揮揮手也不錯，幾乎都會被回應，在旁邊看到很多種人：情侶、獨行者、小孩、老人、高中生、行動不便者、很融入的人、在旁邊光看也很開心的人，不知道為什麼覺得有種世界大同的感覺。</p><p>晚上還有個萬聖節的遊行，和下午的遊行不太一樣，可以在園區內自己去找殭屍玩，第一天的晚上就去找了很多殭屍，還手殘不小心開到閃光燈被制止，不過被制止的很客氣，就也不影響心情。殭屍會去嚇你，或者突然趁你不注意時出現在你的後面，還有其他一些方式去和你互動，就自己去體驗吧，不過殭屍就是很不受控的角色，你要對他幹什麼，通常也不是太理你啦，和白天可能看到的角色不一樣，是要得到你的關注，只是想要聽到你的尖叫聲，去挑釁的人也大有人在，但我在旁邊可以感覺到一種故意冷落挑釁人的感覺。一堆ㄆㄨㄧˋㄍㄧㄚˋ</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我們抵達日本後的隔一天行程就是直接安排1.5日的大阪環球影城，難波到環球影城稍遠，還要轉至少一次車，不過除了住在環球影城旁邊之外，好像都是如此。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="日記" scheme="https://blog.hung.services/categories/%E6%97%A5%E8%A8%98/"/>
+    
+    
+      <category term="大阪" scheme="https://blog.hung.services/tags/%E5%A4%A7%E9%98%AA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>10月大阪旅-下飛機的隨手記</title>
+    <link href="https://blog.hung.services/2019/11/22/10%E6%9C%88%E5%A4%A7%E9%98%AA%E6%97%85-%E4%B8%8B%E9%A3%9B%E6%A9%9F%E7%9A%84%E9%9A%A8%E6%89%8B%E8%A8%98/"/>
+    <id>https://blog.hung.services/2019/11/22/10月大阪旅-下飛機的隨手記/</id>
+    <published>2019-11-22T15:19:31.000Z</published>
+    <updated>2020-02-01T04:55:51.773Z</updated>
+    
+    <content type="html"><![CDATA[<p>在日本下飛機後是在第二航廈，一樣是小小一個航廈，沒什麼東西，下來之後因為找不到網路上說的南海電車，可是一下來看到非官方的中文服務，剛好有在賣到難波的巴士，不過要1100日幣，跟在飛機上看到賣得票一樣價格，還順便買了一張周遊卡，一樣是定價2700日幣，幸好剛好沒賣萬博週遊卡，不然哭死。反正樂桃就是個爹不疼娘不愛的路線。</p><a id="more"></a><p>關西機場第二航廈也沒啥吃的，是走到出發報到的地方才有一間7-11可以先吃點點心，不然可能到難波時已經16:00快餓死了。</p><p>搭巴士到難波時已經快16:30了，剛好到一個mall，可是卻好像什麼都沒開一樣，只有兩層樓可以吃東西，不過五樓很多連鎖店，像是杵屋烏龍麵店和鶴月風橋大阪燒，還可以接受。</p><p>我們是住在難波的一間青年旅館，一開始有點找不到入口，因為是在docomo的樓上，而且不知道為什麼一樓的入口被鎖起來，明明說晚上10點才需要密碼鎖，最後是走docomo的自動門進去。</p><p>青旅的老闆是個和藹的大叔，很吃力的用中文跟我們說明注意事項，雖然片片斷斷的，不過大多可以理解他要表達什麼。</p><p>這一間青旅我還蠻推薦的，我是住雙人房，床是分上下舖，上鋪不是走刀梯，是有台階的木板可以走，所以腳不會痛。床是以木頭為主體，所以動的稍微大力一點，上下舖都是會有感覺的，不過也因為是和認識、而且習慣蠻好的人一起，所以不是太大的問題，比睡大通舖的情旅風險低一點，價格是1300日幣左右，自己一床也大約是600日幣，覺得還可以接受。除了床之外，裡面還有一張桌子和椅子，有對外窗和鏡子，即使有對外窗，好像也不會被外面吵到，除非外面的人在吵架或者有沒有消音管的車子開過去才會感覺被吵到，外面逛街的人不太會影響作息。另外，這間青旅的盥洗用具超齊全，洗髮乳、護髮油、沐浴乳、浴巾這些基本的都有，牙刷組和洗面乳也都免費提供，只有如果住宿間要打掃房間需要另外收費，覺得還蠻划算的。早餐雖然說不提供，可是只是限量提供，早上8點之後都有吐司在3樓的大廳，每個人可以自己去拿兩片烤來吃，有提供草莓和奶油，我只是無法掌握他們的烤麵包機，怎麼烤都會有點焦⋯。</p><p>住的地點是選在難波，因為原本是想說去道頓堀、心齋橋、黑門市場都很近，走路的距離就可以到，旁邊也是各種地鐵的交匯處，這幾天住下來都很方便。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在日本下飛機後是在第二航廈，一樣是小小一個航廈，沒什麼東西，下來之後因為找不到網路上說的南海電車，可是一下來看到非官方的中文服務，剛好有在賣到難波的巴士，不過要1100日幣，跟在飛機上看到賣得票一樣價格，還順便買了一張周遊卡，一樣是定價2700日幣，幸好剛好沒賣萬博週遊卡，不然哭死。反正樂桃就是個爹不疼娘不愛的路線。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="日記" scheme="https://blog.hung.services/categories/%E6%97%A5%E8%A8%98/"/>
+    
+    
+      <category term="大阪" scheme="https://blog.hung.services/tags/%E5%A4%A7%E9%98%AA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2019/03/15 新興國中</title>
+    <link href="https://blog.hung.services/2019/03/16/2019-03-15-%E6%96%B0%E8%88%88%E5%9C%8B%E4%B8%AD/"/>
+    <id>https://blog.hung.services/2019/03/16/2019-03-15-新興國中/</id>
+    <published>2019-03-15T17:22:49.000Z</published>
+    <updated>2020-02-01T04:55:51.774Z</updated>
+    
+    <content type="html"><![CDATA[<p>用球：品牌好像叫 CRM，藍色的標籤，藍黑色的球捅，我覺得蠻飛的，但是有點不耐打<br>程度：中下<br>人均：5 人 / 1 面 / 兩小時，但是另外有兩個場地，我沒有過去打，固定在程度較高的場地輪流而已</p><a id="more"></a><hr><p>今天打起來在守備上還蠻順的，很少跑不到位或者被壓迫的情況，只是前場還是挑球比較多，但是今天就算遇到很貼網或者翻網球，都可以挑到後場不會被壓迫的位置。</p><p>前場還是很多失誤，尤其在水準和我差不多的對手時，撲球和放貼網球失誤很多，我歸類在心理素質還是不太好，容易緊張，雖然本身打球的風格就是打慢，但是當有機會球時，還是會太要求貼網。</p><p>今天除了在守備之外，對於根據球的飛行距離也調整的很順暢，遇到羽球已經分岔或掉毛，很快就可以根據情況調整對應對手的回擊方式，像是刻意打到後場，我方取得控制中前場的主控權。</p><hr><p>題外話，今天晚上看了參考資料的影片，還有最近教人一些打球時遇到的問題，覺得羽球打到後面，真的沒有什麼球是一定要怎麼打，原則就是打得順、跑得順就好。</p><p>步伐對於初學者之外，除了本身都是衝來衝去，或者就是身體太高，機動性不夠之外，有稍微練過步伐的人，都太拘泥於幾步到位，變成有時候可以跑到位，但是擊球點都太靠近身體的問題，或者衝過頭的問題。如果可以像是影片中說的，加入一些小墊步，可以避免擊球點太過彆扭的問題。</p><h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://www.youtube.com/watch?v=Ys1Y_J8wsQs" target="_blank" rel="noopener">步伐的移動</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用球：品牌好像叫 CRM，藍色的標籤，藍黑色的球捅，我覺得蠻飛的，但是有點不耐打&lt;br&gt;程度：中下&lt;br&gt;人均：5 人 / 1 面 / 兩小時，但是另外有兩個場地，我沒有過去打，固定在程度較高的場地輪流而已&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git 分支的相關應用</title>
+    <link href="https://blog.hung.services/2019/03/12/Git-%E5%88%86%E6%94%AF%E7%9A%84%E7%9B%B8%E9%97%9C%E6%87%89%E7%94%A8/"/>
+    <id>https://blog.hung.services/2019/03/12/Git-分支的相關應用/</id>
+    <published>2019-03-12T04:40:32.000Z</published>
+    <updated>2020-02-01T04:55:51.775Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="推到-server"><a href="#推到-server" class="headerlink" title="推到 server"></a>推到 server</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin &lt;branch_name&gt;</span><br></pre></td></tr></table></figure><h2 id="從-server-拉下來"><a href="#從-server-拉下來" class="headerlink" title="從 server 拉下來"></a>從 server 拉下來</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;branch-name&gt; origin/&lt;branch-name&gt;</span><br><span class="line">// &lt;branch-name&gt; 是一樣的</span><br></pre></td></tr></table></figure><p>如果遇到錯誤，請執行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br><span class="line">git checkout &lt;branch-name&gt;</span><br></pre></td></tr></table></figure><h2 id="刪除-server-上的分支"><a href="#刪除-server-上的分支" class="headerlink" title="刪除 server 上的分支"></a>刪除 server 上的分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --delete &lt;remote_name&gt; &lt;branch_name&gt;</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="新增本地分支"><a href="#新增本地分支" class="headerlink" title="新增本地分支"></a>新增本地分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;branch-name&gt;</span><br></pre></td></tr></table></figure><h2 id="切換到分支"><a href="#切換到分支" class="headerlink" title="切換到分支"></a>切換到分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;branch-name&gt;</span><br></pre></td></tr></table></figure><p>或者想要新增同時又切換到新分支，可以輸入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;branch-name&gt;</span><br></pre></td></tr></table></figure><h2 id="刪除分支"><a href="#刪除分支" class="headerlink" title="刪除分支"></a>刪除分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;branch-name&gt;</span><br></pre></td></tr></table></figure><h2 id="合併分支"><a href="#合併分支" class="headerlink" title="合併分支"></a>合併分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge &lt;branch-name&gt;</span><br></pre></td></tr></table></figure><p>通常是先切換到當初分支出來的主分支，在主分支執行 git merge</p><h2 id="cherry-pick-取用某個-commit"><a href="#cherry-pick-取用某個-commit" class="headerlink" title="cherry-pick 取用某個 commit"></a>cherry-pick 取用某個 commit</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick &lt;commit-sha1&gt;</span><br></pre></td></tr></table></figure><p>操作流程如下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git commit -m &apos;某些修正&apos;</span><br><span class="line">git log</span><br><span class="line">// 找到剛剛的 commit sha1，假設為 a123456</span><br><span class="line">git checkout dev</span><br><span class="line">git cherry-pick a123456</span><br></pre></td></tr></table></figure><p>如果在 master 修改，再回到 dev 使用 cherry-pick，兩邊都會有不同的 sha1 的 commit，當 master 又要 merge dev 時，需要解決其他衝突</p><h2 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;other-branch&gt;</span><br><span class="line">git rebase master</span><br></pre></td></tr></table></figure><p>我的理解是，假設平常都是在 dev 修改程式，master 是只有將程式上線到正式環境才會 commit 的主分支，如果臨時要對 master 修改，先將 master 修改後，再回到 dev rebase master，讓 dev 重新以修正問題的 master 為基底繼續修改。</p><p>如果是在 master 直接修改，在 dev 使用 cherry-pick，後續要在 master merge dev 會需要處理很多衝突。</p><p>如果記不起來應該何時使用，可以都使用 merge 就好，使用 merge 只是會多出一個 commit 的節點，是否有衝突，如何處理，都是一樣的。</p><hr><h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://www.freecodecamp.org/forum/t/push-a-new-local-branch-to-a-remote-git-repository-and-track-it-too/13222" target="_blank" rel="noopener">freecodecamp</a><br><a href="https://stackoverflow.com/questions/9537392/git-fetch-remote-branch" target="_blank" rel="noopener">stackoverflow</a><br><a href="https://backlog.com/git-tutorial/tw/" target="_blank" rel="noopener">連猴子都能懂的Git入門指南〜掌握版本控制</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;推到-server&quot;&gt;&lt;a href=&quot;#推到-server&quot; class=&quot;headerlink&quot; title=&quot;推到 server&quot;&gt;&lt;/a&gt;推到 server&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git push -u origin &amp;lt;branch_name&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;從-server-拉下來&quot;&gt;&lt;a href=&quot;#從-server-拉下來&quot; class=&quot;headerlink&quot; title=&quot;從 server 拉下來&quot;&gt;&lt;/a&gt;從 server 拉下來&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git checkout -b &amp;lt;branch-name&amp;gt; origin/&amp;lt;branch-name&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// &amp;lt;branch-name&amp;gt; 是一樣的&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果遇到錯誤，請執行&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git pull&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git checkout &amp;lt;branch-name&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;刪除-server-上的分支&quot;&gt;&lt;a href=&quot;#刪除-server-上的分支&quot; class=&quot;headerlink&quot; title=&quot;刪除 server 上的分支&quot;&gt;&lt;/a&gt;刪除 server 上的分支&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git push --delete &amp;lt;remote_name&amp;gt; &amp;lt;branch_name&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Git" scheme="https://blog.hung.services/categories/Git/"/>
+    
+    
+      <category term="branch" scheme="https://blog.hung.services/tags/branch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如果資料不存在才插入</title>
+    <link href="https://blog.hung.services/2019/03/05/%E5%A6%82%E6%9E%9C%E8%B3%87%E6%96%99%E4%B8%8D%E5%AD%98%E5%9C%A8%E6%89%8D%E6%8F%92%E5%85%A5/"/>
+    <id>https://blog.hung.services/2019/03/05/如果資料不存在才插入/</id>
+    <published>2019-03-04T16:31:20.000Z</published>
+    <updated>2020-02-01T04:55:51.787Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">insert into proposal_label (name)</span><br><span class="line">select * from (select label_name) AS tmp</span><br><span class="line">where not exists (</span><br><span class="line">  select id from proposal_label where name = label_name</span><br><span class="line">) limit 1;</span><br></pre></td></tr></table></figure><a id="more"></a><p>以上為實際範例</p><hr><h3 id="不使用以下插入方式"><a href="#不使用以下插入方式" class="headerlink" title="不使用以下插入方式"></a>不使用以下插入方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into &lt;table-name&gt; (...columns)</span><br><span class="line">value (...values)</span><br></pre></td></tr></table></figure><p><br></p><h3 id="使用以下方式插入"><a href="#使用以下方式插入" class="headerlink" title="使用以下方式插入"></a>使用以下方式插入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into &lt;table-name&gt; (...columns)</span><br><span class="line">select columns from &lt;table-name&gt; where &lt;addition&gt;</span><br></pre></td></tr></table></figure><p><br></p><h3 id="因為要考慮只有在沒有資料的情況下才插入資料，所以要加入-where-not-exists-的變形用法"><a href="#因為要考慮只有在沒有資料的情況下才插入資料，所以要加入-where-not-exists-的變形用法" class="headerlink" title="因為要考慮只有在沒有資料的情況下才插入資料，所以要加入 where not exists 的變形用法"></a>因為要考慮只有在沒有資料的情況下才插入資料，所以要加入 where not exists 的變形用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from (select label_name) AS tmp</span><br></pre></td></tr></table></figure><p>會將要插入的資料變成一張暫時的 table</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">where not exists (</span><br><span class="line">  select id from proposal_label where name = label_name</span><br><span class="line">) limit 1;</span><br></pre></td></tr></table></figure><p>要確認要插入的該張 table 沒有這個 value 的資料存在</p><p>limit 1 是因為不必撈出過多的資料，這樣有助於執行速率。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;insert into proposal_label (name)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;select * from (select label_name) AS tmp&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;where not exists (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  select id from proposal_label where name = label_name&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;) limit 1;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="MySql" scheme="https://blog.hung.services/categories/MySql/"/>
+    
+    
+      <category term="insert" scheme="https://blog.hung.services/tags/insert/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Store Procedure with Transaction 交易功能</title>
+    <link href="https://blog.hung.services/2019/03/05/Store-Procedure-with-Transaction-%E4%BA%A4%E6%98%93%E5%8A%9F%E8%83%BD/"/>
+    <id>https://blog.hung.services/2019/03/05/Store-Procedure-with-Transaction-交易功能/</id>
+    <published>2019-03-04T16:22:31.000Z</published>
+    <updated>2020-02-01T04:55:51.779Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">declare exit handler for sqlexception</span><br><span class="line">begin</span><br><span class="line">  GET DIAGNOSTICS CONDITION 1</span><br><span class="line">  @error_code = RETURNED_SQLSTATE,</span><br><span class="line">  @error_msg = MESSAGE_TEXT;</span><br><span class="line">  rollback;</span><br><span class="line">  insert into log_sql (log) values(@error_msg);</span><br><span class="line">  RESIGNAL;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">set trello_id = JSON_UNQUOTE(JSON_EXTRACT(params, &apos;$.trello_id&apos;));</span><br><span class="line">set trello_name = JSON_UNQUOTE(JSON_EXTRACT(params, &apos;$.trello_name&apos;));</span><br><span class="line">set customer = JSON_UNQUOTE(JSON_EXTRACT(params, &apos;$.customer&apos;));</span><br><span class="line"></span><br><span class="line">start transaction;</span><br><span class="line">  insert into proposal_trello (id, name, customer)</span><br><span class="line">  values (trello_id, trello_name, customer);</span><br><span class="line">commit;</span><br></pre></td></tr></table></figure><a id="more"></a><hr><h2 id="start-transaction"><a href="#start-transaction" class="headerlink" title="start transaction;"></a>start transaction;</h2><p>告知準備開始交易功能的敘述</p><h2 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h2><p>如果都成功的話，就把剛剛做的交易都執行</p><h2 id="handler-for-sqlexception"><a href="#handler-for-sqlexception" class="headerlink" title="handler for sqlexception"></a>handler for sqlexception</h2><p>如果在這隻 store procedure 遇到例外不能執行完成，就會進入這個 handler</p><h2 id="rollback"><a href="#rollback" class="headerlink" title="rollback;"></a>rollback;</h2><p>將剛剛暫存的交易都回滾，當作沒有發生</p><p><code>注意，如果宣告 errorcode 和 errormsg 暫存的處理放在 rollback 之後，會取得不了，因為連錯誤都被回滾洗掉了</code></p><h2 id="RESIGNAL"><a href="#RESIGNAL" class="headerlink" title="RESIGNAL"></a>RESIGNAL</h2><p>重新發出一次 sql 執行錯誤的訊息給外部執行者</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;declare exit handler for sqlexception&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;begin&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  GET DIAGNOSTICS CONDITION 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  @error_code = RETURNED_SQLSTATE,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  @error_msg = MESSAGE_TEXT;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  rollback;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  insert into log_sql (log) values(@error_msg);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  RESIGNAL;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;set trello_id = JSON_UNQUOTE(JSON_EXTRACT(params, &amp;apos;$.trello_id&amp;apos;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;set trello_name = JSON_UNQUOTE(JSON_EXTRACT(params, &amp;apos;$.trello_name&amp;apos;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;set customer = JSON_UNQUOTE(JSON_EXTRACT(params, &amp;apos;$.customer&amp;apos;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;start transaction;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  insert into proposal_trello (id, name, customer)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  values (trello_id, trello_name, customer);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;commit;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="MySql" scheme="https://blog.hung.services/categories/MySql/"/>
+    
+    
+      <category term="store procedure" scheme="https://blog.hung.services/tags/store-procedure/"/>
+    
+      <category term="transaction" scheme="https://blog.hung.services/tags/transaction/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Store Procedure Error Handler 例外處理</title>
+    <link href="https://blog.hung.services/2019/03/04/Store-Procedure-Error-Handler-%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86/"/>
+    <id>https://blog.hung.services/2019/03/04/Store-Procedure-Error-Handler-例外處理/</id>
+    <published>2019-03-04T15:54:39.000Z</published>
+    <updated>2020-02-01T04:55:51.779Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">declare exit handler for sqlexception</span><br><span class="line">begin</span><br><span class="line">  GET DIAGNOSTICS CONDITION 1</span><br><span class="line">  @error_code = RETURNED_SQLSTATE,</span><br><span class="line">  @error_msg = MESSAGE_TEXT;</span><br><span class="line">  rollback;</span><br><span class="line">  insert into log_sql (log) values(@error_msg);</span><br><span class="line">  RESIGNAL;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="宣告-handler"><a href="#宣告-handler" class="headerlink" title="宣告 handler"></a>宣告 handler</h2><p>使用 declare 宣告 handler </p><p>for 後面接的是情況，可以接 sqlexception、sqlwarning、not found</p><h2 id="RESIGNAL"><a href="#RESIGNAL" class="headerlink" title="RESIGNAL"></a>RESIGNAL</h2><p>因為我們已經 catch 到 exception，等於外部執行這個 store procedure 明明遇到錯誤，可是錯誤訊息已經被 catch 住，如果需要回傳 mysql server 原始的錯誤訊息，可以使用 RESIGNAL </p><h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><ol><li>要符合 declare 原則，在 set 還有操作 db 的 sql 語法之前</li><li>要在 declare 一般變數之後</li></ol><h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">drop procedure if exists removeProposalLabels;</span><br><span class="line">delimiter #</span><br><span class="line">create procedure removeProposalLabels (</span><br><span class="line">params JSON </span><br><span class="line">)</span><br><span class="line">begin</span><br><span class="line">  declare trello_id varchar(10) character set utf8;</span><br><span class="line">  declare labels varchar(500) character set utf8;</span><br><span class="line">  declare loop_index int default 0;</span><br><span class="line">  declare label_id int;</span><br><span class="line">  -- log 錯誤訊息</span><br><span class="line">  declare exit handler for sqlexception</span><br><span class="line">  begin</span><br><span class="line">    GET DIAGNOSTICS CONDITION 1</span><br><span class="line">    @error_code = RETURNED_SQLSTATE,</span><br><span class="line">    @error_msg = MESSAGE_TEXT;</span><br><span class="line">    rollback;</span><br><span class="line">    insert into log_sql (log) values(@error_msg);</span><br><span class="line">    RESIGNAL;</span><br><span class="line">  end;</span><br><span class="line"></span><br><span class="line">  set trello_id = JSON_UNQUOTE(JSON_EXTRACT(params, &apos;$.trello_id&apos;));</span><br><span class="line">  set labels = JSON_EXTRACT(params, &apos;$.labels&apos;);</span><br><span class="line"></span><br><span class="line">  start transaction;</span><br><span class="line">    while loop_index &lt; JSON_LENGTH(labels) DO</span><br><span class="line">      set label_id = JSON_EXTRACT(labels,CONCAT(&apos;$[&apos;,loop_index,&apos;]&apos;));</span><br><span class="line">      delete from proposal_label_mapping where proposal_label_mapping.trello_id = trello_id and proposal_label_mapping.label_id = label_id;</span><br><span class="line"></span><br><span class="line">      select loop_index + 1 into loop_index;</span><br><span class="line">    end while;</span><br><span class="line">  commit;</span><br><span class="line">end#</span><br><span class="line"></span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;declare exit handler for sqlexception&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;begin&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  GET DIAGNOSTICS CONDITION 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  @error_code = RETURNED_SQLSTATE,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  @error_msg = MESSAGE_TEXT;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  rollback;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  insert into log_sql (log) values(@error_msg);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  RESIGNAL;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="MySql" scheme="https://blog.hung.services/categories/MySql/"/>
+    
+    
+      <category term="store procedure" scheme="https://blog.hung.services/tags/store-procedure/"/>
+    
+      <category term="exception" scheme="https://blog.hung.services/tags/exception/"/>
+    
+  </entry>
+  
+</feed>
